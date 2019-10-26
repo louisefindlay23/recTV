@@ -24,7 +24,7 @@
         android:layout_width="409dp"
         android:layout_height="244dp"
         android:layout_marginTop="60dp"
-        android:contentDescription="Show Thumb"
+        android:contentDescription="@string/show_thumb"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAppName"
         app:srcCompat="@drawable/personofinterest_thumb" />
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="2011 / CBS / TV-14"
+        android:text="@string/show_stats"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:fontFamily="@font/fredoka_one"
@@ -52,7 +52,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text='John Reese, a presumed dead former CIA agent, is approached by a mysterious billionaire named Harold Finch to prevent violent crimes before they happen by using an advanced surveillance system dubbed "The Machine". '
+        android:text="@string/show_description"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:fontFamily="@font/lato"

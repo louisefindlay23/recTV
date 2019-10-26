@@ -32,7 +32,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Recommended"
+        android:text="@string/recommended"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:fontFamily="@font/fredoka_one"

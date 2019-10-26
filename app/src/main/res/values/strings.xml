@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">recTV</string>
+    <string name="thumbs_up">Thumbs Up</string>
+    <string name="or">or</string>
+    <string name="thumbs_down">Thumbs Down</string>
+    <string name="app_description">shows on the TVDB to\nget highly detailed\nrecommendations on\nwhat to watch next</string>
+    <string name="btn_continue">Continue</string>
+    <string name="recommended">Recommended</string>
+    <string name="show_thumb">Show Thumb</string>
+    <string name="show_stats">2011 / CBS / TV-14</string>
+    <string name="show_description">John Reese, a presumed dead former CIA agent, is approached by a mysterious billionaire named Harold Finch to prevent violent crimes before they happen by using an advanced surveillance system dubbed "The Machine".</string>
 </resources>
