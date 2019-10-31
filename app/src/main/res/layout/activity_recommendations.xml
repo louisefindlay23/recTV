@@ -40,4 +40,93 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAppName" />
 
+    <ImageView
+        android:id="@+id/ivBullPoster"
+        android:layout_width="110dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:contentDescription="Bull Poster"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecommended"
+        app:srcCompat="@drawable/bull_poster" />
+
+    <ImageView
+        android:id="@+id/ivBlindspotPoster"
+        android:layout_width="115dp"
+        android:layout_height="185dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="Blindspot Poster"
+        app:layout_constraintEnd_toStartOf="@+id/ivAgentXPoster"
+        app:layout_constraintStart_toEndOf="@+id/ivBullPoster"
+        app:layout_constraintTop_toTopOf="@+id/ivBullPoster"
+        app:srcCompat="@drawable/blindspot_poster" />
+
+    <ImageView
+        android:id="@+id/ivAgentXPoster"
+        android:layout_width="115dp"
+        android:layout_height="188dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="Agent X Poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBlindspotPoster"
+        app:srcCompat="@drawable/agentx_poster" />
+
+    <TextView
+        android:id="@+id/tvFansofShooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Fans of Shooter, also liked"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:fontFamily="@font/fredoka_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBlindspotPoster" />
+
+    <ImageView
+        android:id="@+id/ivTheLoomingTower"
+        android:layout_width="105dp"
+        android:layout_height="156dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="The Looming Tower Poster"
+        app:layout_constraintEnd_toStartOf="@+id/ivTakenPoster"
+        app:layout_constraintStart_toEndOf="@+id/ivNCISLAPoster"
+        app:layout_constraintTop_toBottomOf="@+id/tvFansofShooter"
+        app:srcCompat="@drawable/theloomingtower_poster" />
+
+    <ImageView
+        android:id="@+id/ivNCISLAPoster"
+        android:layout_width="109dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:contentDescription="NCIS LA Poster"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFansofShooter"
+        app:srcCompat="@drawable/ncisla_poster" />
+
+    <ImageView
+        android:id="@+id/ivTakenPoster"
+        android:layout_width="120dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="Taken Poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFansofShooter"
+        app:srcCompat="@drawable/taken_poster" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
