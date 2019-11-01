@@ -49,16 +49,16 @@
         app:layout_constraintTop_toTopOf="@+id/ivBlindspotPoster" />
 
     <ImageView
-        android:id="@+id/ivBullPoster"
+        android:id="@+id/ivPersonofInterestPoster"
         android:layout_width="110dp"
         android:layout_height="176dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="60dp"
-        android:contentDescription="@string/bull_poster"
+        android:contentDescription="@string/personofinterest_poster"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRecommended"
-        app:srcCompat="@drawable/bull_poster" />
+        app:srcCompat="@drawable/personofinterest_poster" />
 
     <ImageView
         android:id="@+id/ivBlindspotPoster"
@@ -70,8 +70,8 @@
         android:layout_marginRight="8dp"
         android:contentDescription="@string/blindspot_poster"
         app:layout_constraintEnd_toStartOf="@+id/ivAgentXPoster"
-        app:layout_constraintStart_toEndOf="@+id/ivBullPoster"
-        app:layout_constraintTop_toTopOf="@+id/ivBullPoster"
+        app:layout_constraintStart_toEndOf="@+id/ivPersonofInterestPoster"
+        app:layout_constraintTop_toTopOf="@+id/ivPersonofInterestPoster"
         app:srcCompat="@drawable/blindspot_poster" />
 
     <ImageView

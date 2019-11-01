@@ -2,13 +2,35 @@ package uk.ac.rgu.rectv;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
-public class RecommendationsActivity extends AppCompatActivity {
+public class RecommendationsActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendations);
+
+        // get the PersonofInterest Poster image
+        ImageView ivPersonofInterestPoster = findViewById(R.id.ivPersonofInterestPoster);
+
+        // set the click listener to the PersonofInterest Poster image
+        ivPersonofInterestPoster.setOnClickListener(this);
+    }
+
+    // Changing Activity
+    @Override
+    public void onClick(View view) {
+        // view is the View (Button, ExitText, TextView, etc) that was clicked
+        if (view.getId() == R.id.ivPersonofInterestPoster) {
+            // create an intent
+            Intent intent = new Intent(getApplicationContext(), Show.class);
+            // start the Activity
+            startActivity(intent);
+        }
     }
 }
