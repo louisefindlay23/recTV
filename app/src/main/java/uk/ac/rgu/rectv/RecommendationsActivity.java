@@ -34,7 +34,7 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
         // view is the View (Button, ExitText, TextView, etc) that was clicked
         if (view.getId() == R.id.ivPersonofInterestPoster) {
             // create an intent
-            Intent intent = new Intent(getApplicationContext(), Show.class);
+            Intent intent = new Intent(getApplicationContext(), ShowActivity.class);
             // start the Activity
             startActivity(intent);
         }
