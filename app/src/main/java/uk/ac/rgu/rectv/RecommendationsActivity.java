@@ -1,6 +1,7 @@
 package uk.ac.rgu.rectv;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,14 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
 
         // set the click listener to the PersonofInterest Poster image
         ivPersonofInterestPoster.setOnClickListener(this);
+
+        // Info for Recycler View
+        shownames = findViewById(R.id.);
+
+        // Recycler View for Show Names
+
+        RecyclerView recyclerView = findViewById(R.id.rvShowName);
+        ShowNameRecyclerViewAdapter adapter = new ShowNameRecyclerViewAdapter(getApplicationContext(), );
     }
 
     // Changing Activity
@@ -46,4 +55,5 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
             startActivity(intent);
         }
     }
+
 }
