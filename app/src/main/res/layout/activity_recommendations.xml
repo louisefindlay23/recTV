@@ -145,4 +145,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ivTheLoomingTower" />
 
+    <TextView
+        android:id="@+id/tvShowNameDisplay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintStart_toStartOf="@+id/ivPersonofInterestPoster"
+        app:layout_constraintTop_toBottomOf="@+id/ivPersonofInterestPoster" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

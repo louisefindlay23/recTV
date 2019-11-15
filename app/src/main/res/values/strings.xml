@@ -7,6 +7,8 @@
     <string name="btn_continue">Continue</string>
     <string name="recommended">Recommended</string>
     <string name="personofinterest_poster">Person of Interest Poster</string>
+    <string name="personofinterest_name">person-of-interest</string>
+    <string name="error_text">There was an error.</string>
     <string name="blindspot_poster">Blindspot Poster</string>
     <string name="agentx_poster">Agent X Poster</string>
     <string name="fansofshooter">Fans of Shooter, also liked</string>
