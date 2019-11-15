@@ -74,9 +74,7 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
             @Override
             public void onErrorResponse(VolleyError error) {
                 TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
-
-                // NEED TO ADD THIS AS A STRING
-                tvShowNameDisplay.setText("There was an error" + error.getLocalizedMessage());
+                tvShowNameDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 
