@@ -17,6 +17,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONObject;
+
 import java.util.Set;
 
 public class RecommendationsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -67,8 +69,16 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        StringBuilder showDescription = new StringBuilder();
+                        JSONObject responseObj = new JSONObject(response);
+                        JSONObject idsObject = responseObj.getJSONObject("ids");
+
+                        if (showDescription.length() == 0){
+
+                        } else {
                         TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
-                        tvShowNameDisplay.setText(response);
+                        tvShowNameDisplay.setText(showDescription).toString());
+                    }
                     }
                 }, new Response.ErrorListener() {
             @Override
