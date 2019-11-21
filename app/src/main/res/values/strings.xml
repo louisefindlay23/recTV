@@ -5,6 +5,8 @@
     <string name="thumbs_down">Thumbs Down</string>
     <string name="app_description">shows on the TVDB to\nget highly detailed\nrecommendations on\nwhat to watch next</string>
     <string name="btn_continue">Continue</string>
+    <string name="down_arrow">Down Arrow</string>
+    <string name="back_arrow">Back Arrow</string>
     <string name="recommended">Recommended</string>
     <string name="personofinterest_poster">Person of Interest Poster</string>
     <string name="blindspot_poster">Blindspot Poster</string>
@@ -16,4 +18,6 @@
     <string name="show_thumb">Show Thumb</string>
     <string name="show_stats">2011 / CBS / TV-14</string>
     <string name="show_description">John Reese, a presumed dead former CIA agent, is approached by a mysterious billionaire named Harold Finch to prevent violent crimes before they happen by using an advanced surveillance system dubbed "The Machine".</string>
+    <string name="prime_video">Prime Video Logo</string>
+    <string name="stream_personofinterest">Stream Person of Interest</string>
 </resources>
