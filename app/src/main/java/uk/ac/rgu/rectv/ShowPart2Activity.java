@@ -3,6 +3,7 @@ package uk.ac.rgu.rectv;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class ShowPart2Activity extends AppCompatActivity implements View.OnClickListener {
+
+    private SharedPreferences sharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,10 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
 
         // set the click listener to the Prime Video image
         ivPrimeVideo.setOnClickListener(this);
+
+        // instantiate sharedPrefs
+        this.sharedPrefs = getSharedPreferences(getString(R.string.shared_prefs_filename), MODE_PRIVATE);
+
     }
 
     // Changing Activity
