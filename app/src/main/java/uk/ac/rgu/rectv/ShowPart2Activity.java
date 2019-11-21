@@ -40,6 +40,7 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
             Intent intent = new Intent(getApplicationContext(), ShowActivity.class);
             // start the Activity
             startActivity(intent);
+            // To launch web browser when Amazon Logo is clicked
         } else if (view.getId() == R.id.ivPrimeVideo) {
             launchWeb();
         }
@@ -47,11 +48,12 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
 
     // Method to launch Implicit Intent to load the web browser
 
-    private void launchWeb(String url) {
+    private void launchWeb() {
         Uri webpage = Uri.parse("https://www.amazon.co.uk/gp/product/B071VSVFW2");
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+
     }
-}
+    }
