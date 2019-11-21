@@ -17,6 +17,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Set;
@@ -70,14 +72,21 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
                     @Override
                     public void onResponse(String response) {
                         StringBuilder showDescription = new StringBuilder();
-                        JSONObject responseObj = new JSONObject(response);
-                        JSONObject idsObject = responseObj.getJSONObject("ids");
+                        TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
+                        try {
+                            JSONObject responseObj = new JSONObject(response);
+                            JSONObject titleObj = responseObj.getJSONObject("title");
+                            JSONObject yearObj = titleObj.getJSONObject("year");
+                            JSONObject idsObj = yearObj.getJSONObject("ids");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                         if (showDescription.length() == 0){
-
+                            tvShowNameDisplay.setText(getString(R.string.showdetails_json_error));
                         } else {
-                        TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
-                        tvShowNameDisplay.setText(showDescription).toString());
+                        tvShowNameDisplay.setText(showDescription.toString());
                     }
                     }
                 }, new Response.ErrorListener() {
