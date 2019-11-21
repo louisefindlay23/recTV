@@ -77,17 +77,13 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
                         StringBuilder showDescription = new StringBuilder();
                         TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
 
-                        List<ShowMetadata> showmetadas = new ArrayList<ShowMetadata>();
+                        List<ShowMetadata> showmetadatas = new ArrayList<ShowMetadata>();
 
                         try {
                             JSONObject responseObj = new JSONObject(response);
-                            String titleObj = responseObj.getString("title");
+                            JSONObject titleObj = responseObj.getString("title");
                             JSONObject yearObj = titleObj.getString("year");
-                            JSONArray idsArray = yearObj.getJSONArray("ids");
-                            for (int i = 0, j = idsArray.length(); i < j ; i++) {
-                                JSONObject idsObj = idsArray.getJSONObject(i);
-                                showDescription.append(idsObj.getString("imdb"));
-                            }
+                            JSONObject idsObj = yearObj.getJSONObject("ids");
 
                         } catch (JSONException e) {
                             e.printStackTrace();
