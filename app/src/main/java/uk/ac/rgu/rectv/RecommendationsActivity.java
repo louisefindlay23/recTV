@@ -20,7 +20,10 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class RecommendationsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -73,11 +76,18 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
                     public void onResponse(String response) {
                         StringBuilder showDescription = new StringBuilder();
                         TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
+
+                        List<ShowMetadata> showmetadas = new ArrayList<ShowMetadata>();
+
                         try {
                             JSONObject responseObj = new JSONObject(response);
-                            JSONObject titleObj = responseObj.getString("title");
-                            JSONObject yearObj = titleObj.getJSONObject("year");
-                            JSONObject idsObj = yearObj.getJSONObject("ids");
+                            String titleObj = responseObj.getString("title");
+                            JSONObject yearObj = titleObj.getString("year");
+                            JSONArray idsArray = yearObj.getJSONArray("ids");
+                            for (int i = 0, j = idsArray.length(); i < j ; i++) {
+                                JSONObject idsObj = idsArray.getJSONObject(i);
+                                showDescription.append(idsObj.getString("imdb"));
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
