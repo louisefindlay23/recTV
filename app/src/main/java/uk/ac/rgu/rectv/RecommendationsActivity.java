@@ -75,7 +75,7 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
                         TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
                         try {
                             JSONObject responseObj = new JSONObject(response);
-                            JSONObject titleObj = responseObj.getJSONObject("title");
+                            JSONObject titleObj = responseObj.getString("title");
                             JSONObject yearObj = titleObj.getJSONObject("year");
                             JSONObject idsObj = yearObj.getJSONObject("ids");
 
