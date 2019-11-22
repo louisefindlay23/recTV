@@ -28,12 +28,6 @@ import java.util.Set;
 
 public class RecommendationsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // TAG to be used when logging
-    private static final String TAG = RecommendationsActivity.class.getCanonicalName();
-
-    // constant for downloading show data
-    private static final String SHOW_URL_TEMPLATE = "http://www.omdbapi.com/?t=%s&apikey=4c1aac0f";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,60 +44,6 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
 
         // set the click listener to the PersonofInterest Poster image
         ivPersonofInterestPoster.setOnClickListener(this);
-
-        // Download show name from Trakt API
-        downloadShowNames();
-    }
-
-    public void downloadShowNames(){
-        // Downloads and displays a show name from Trakt API
-        String getShowDetailsForShowNames = (getString(R.string.personofinterest_name));
-
-        Log.d(TAG, "getting the show details for" + getShowDetailsForShowNames);
-
-        // if there's no show name to download details for then exit
-        if (getShowDetailsForShowNames == null) {
-            return;
-        }
-
-        // build string for the URL to get the show details from
-        String url = String.format(SHOW_URL_TEMPLATE, getShowDetailsForShowNames);
-
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        StringBuilder showDescription = new StringBuilder();
-                        TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
-
-                        try {
-                            JSONObject responseObj = new JSONObject(response);
-                            String titleObj = responseObj.getString("Title");
-                            // add the title to the display
-                            showDescription.append("\n")
-                                    .append(responseObj.getString("Title"));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        if (showDescription.length() == 0){
-                            tvShowNameDisplay.setText(getString(R.string.showdetails_json_error));
-                        } else {
-                        tvShowNameDisplay.setText(showDescription.toString());
-                    }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
-                tvShowNameDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
-            }
-        });
-
-        // make the request to download the show details
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        queue.add(stringRequest);
     }
 
     // Changing Activity
