@@ -32,7 +32,7 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
     private static final String TAG = RecommendationsActivity.class.getCanonicalName();
 
     // constant for downloading show data
-    private static final String SHOW_URL_TEMPLATE = "https://private-anon-b6a956c00a-trakt.apiary-mock.com/shows/%s";
+    private static final String SHOW_URL_TEMPLATE = "http://www.omdbapi.com/?t=%s&apikey=4c1aac0f";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,14 +77,12 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
                         StringBuilder showDescription = new StringBuilder();
                         TextView tvShowNameDisplay = findViewById(R.id.tvShowNameDisplay);
 
-                        List<ShowMetadata> showmetadatas = new ArrayList<ShowMetadata>();
-
                         try {
                             JSONObject responseObj = new JSONObject(response);
-                            JSONObject titleObj = responseObj.getString("title");
-                            JSONObject yearObj = titleObj.getString("year");
-                            JSONObject idsObj = yearObj.getJSONObject("ids");
-
+                            String titleObj = responseObj.getString("Title");
+                            // add the title to the display
+                            showDescription.append("\n")
+                                    .append(responseObj.getString("Title"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
