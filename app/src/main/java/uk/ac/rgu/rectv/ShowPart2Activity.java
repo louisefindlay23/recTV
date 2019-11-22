@@ -61,6 +61,11 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor sharedPrefsEditor = this.sharedPrefs.edit();
     }
-    }
+}
