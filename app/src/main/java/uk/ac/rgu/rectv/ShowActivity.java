@@ -38,12 +38,15 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         // set the click listener to the btnAppName burtton
         btnAppName.setOnClickListener(this);
 
-        // Download show description from Trakt API
+        // Download show description from OMDB API
         downloadShowDescription();
+
+        // Download show stats from OMDB API
+        downloadShowStats();
     }
 
     public void downloadShowDescription(){
-        // Downloads and displays a show name from Trakt API
+        // Downloads and displays a show description from the OMDB API
         String getShowNameForShowMetadata = (getString(R.string.personofinterest_name));
 
         Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
@@ -62,12 +65,12 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onResponse(String response) {
                         StringBuilder showDescription = new StringBuilder();
-                        TextView tvShowNameDisplay = findViewById(R.id.tvShowDescription);
+                        TextView tvShowDescriptionDisplay = findViewById(R.id.tvShowDescription);
 
                         try {
                             JSONObject responseObj = new JSONObject(response);
-                            String titleObj = responseObj.getString("Plot");
-                            // add the title to the display
+                            String plotObj = responseObj.getString("Plot");
+                            // add the plot to the display
                             showDescription.append("\n")
                                     .append(responseObj.getString("Plot"));
                         } catch (JSONException e) {
@@ -75,16 +78,16 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
                         }
 
                         if (showDescription.length() == 0){
-                            tvShowNameDisplay.setText(getString(R.string.showdetails_json_error));
+                            tvShowDescriptionDisplay.setText(getString(R.string.showdetails_json_error));
                         } else {
-                            tvShowNameDisplay.setText(showDescription.toString());
+                            tvShowDescriptionDisplay.setText(showDescription.toString());
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                TextView tvShowNameDisplay = findViewById(R.id.tvShowDescription);
-                tvShowNameDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
+                TextView tvShowDescriptionDisplay = findViewById(R.id.tvShowDescription);
+                tvShowDescriptionDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 
@@ -93,6 +96,58 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         queue.add(stringRequest);
     }
 
+    public void downloadShowStats(){
+        // Downloads and displays the Show Stats from OMDB API
+        String getShowNameForShowMetadata = (getString(R.string.personofinterest_name));
+
+        Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
+
+        // if there's no show name to download details for then exit
+        if (getShowNameForShowMetadata == null) {
+            return;
+        }
+
+        // build string for the URL to get the show details from
+        String url = String.format(SHOW_URL_TEMPLATE, getShowNameForShowMetadata);
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        StringBuilder showDescription = new StringBuilder();
+                        TextView tvShowStats = findViewById(R.id.tvShowStats);
+
+                        try {
+                            JSONObject responseObj = new JSONObject(response);
+                            String yearObj = responseObj.getString("Year");
+                            // add the title to the display
+                            showDescription.append("\n")
+                                    .append(responseObj.getString("Year"))
+                                    .append(" / ").append(responseObj.getString("Runtime"))
+                                    .append(" / ").append(responseObj.getString("Rated"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (showDescription.length() == 0){
+                            tvShowStats.setText(getString(R.string.showdetails_json_error));
+                        } else {
+                            tvShowStats.setText(showDescription.toString());
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                TextView tvShowStats = findViewById(R.id.tvShowStats);
+                tvShowStats.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
+            }
+        });
+
+        // make the request to download the show details
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        queue.add(stringRequest);
+    }
     // Changing Activity
     @Override
     public void onClick(View view) {
