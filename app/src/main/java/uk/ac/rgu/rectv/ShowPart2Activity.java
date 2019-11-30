@@ -5,16 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ShowPart2Activity extends AppCompatActivity implements View.OnClickListener {
 
     private SharedPreferences sharedPrefs;
+    private boolean personofinterest_liked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,17 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         // instantiate sharedPrefs
         this.sharedPrefs = getSharedPreferences(getString(R.string.shared_prefs_filename), MODE_PRIVATE);
 
+        // restore the value of if a TV Show was liked or not
+        personofinterest_liked = sharedPrefs.getBoolean(getString(R.string.shared_pref_personofinterest_liked), true);
+
+        // If the show is liked or disliked
+        if(personofinterest_liked == true){
+            TextView tvPOIor = findViewById(R.id.tvPOIor);
+            tvPOIor.setText("Liked");
+        } else if (personofinterest_liked == false) {
+            TextView tvPOIor = findViewById(R.id.tvPOIor);
+            tvPOIor.setText("Disliked");
+        }
     }
 
     // Changing Activity
@@ -52,13 +62,16 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
             launchWeb();
     } else if (view.getId() == R.id.ivLikeOutline) {
         // Set Shared Preferences variable to true
-        boolean personofinterest_liked = true;
+        personofinterest_liked = true;
             // Change image to LikeIcon
-
+            TextView tvPOIor = findViewById(R.id.tvPOIor);
+            tvPOIor.setText("Liked");
     } else if (view.getId() == R.id.ivDislikeOutline) {
         // Set Shared Preferences variable to false
-        boolean personofinterest_liked = false;
+        personofinterest_liked = false;
         // Change image to LikeIcon
+            TextView tvPOIor = findViewById(R.id.tvPOIor);
+            tvPOIor.setText("Disliked");
     }
     }
 
@@ -79,7 +92,7 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         SharedPreferences.Editor sharedPrefsEditor = this.sharedPrefs.edit();
 
         // Store if Like icon has been clicked or not
-        sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_personofinterest_liked), boolean personofinterest_liked)
+        sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_personofinterest_liked), personofinterest_liked);
 
         // Apply the edits to Shared Preferences
         sharedPrefsEditor.apply();
