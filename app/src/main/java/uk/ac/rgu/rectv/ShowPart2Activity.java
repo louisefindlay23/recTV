@@ -32,6 +32,18 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         // set the click listener to the Prime Video image
         ivPrimeVideo.setOnClickListener(this);
 
+        // get the Like Outline image
+        ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
+
+        // set the click listener to the like outline
+        ivLikeOutline.setOnClickListener(this);
+
+        // get the Disike Outline image
+        ImageView ivDisikeOutline = findViewById(R.id.ivDislikeOutline);
+
+        // set the click listener to the dislike outline
+        ivDisikeOutline.setOnClickListener(this);
+
         // instantiate sharedPrefs
         this.sharedPrefs = getSharedPreferences(getString(R.string.shared_prefs_filename), MODE_PRIVATE);
 
@@ -40,9 +52,13 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
 
         // If the show is liked or disliked
         if(personofinterest_liked == true){
+            ivLikeOutline.setImageResource(R.drawable.like_icon);
+            ivDisikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Liked");
         } else if (personofinterest_liked == false) {
+            ivLikeOutline.setImageResource(R.drawable.like_outline);
+            ivDisikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Disliked");
         }
@@ -64,12 +80,20 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         // Set Shared Preferences variable to true
         personofinterest_liked = true;
             // Change image to LikeIcon
+            ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
+            ivLikeOutline.setImageResource(R.drawable.like_icon);
+            ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
+            ivDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Liked");
     } else if (view.getId() == R.id.ivDislikeOutline) {
         // Set Shared Preferences variable to false
         personofinterest_liked = false;
         // Change image to LikeIcon
+            ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
+            ivLikeOutline.setImageResource(R.drawable.like_outline);
+            ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
+            ivDislikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Disliked");
     }
