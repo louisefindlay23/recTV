@@ -8,44 +8,37 @@
     tools:context=".ShowPart2Activity">
 
     <ImageView
-        android:id="@+id/ivThumbsUp"
+        android:id="@+id/ivLikeOutline"
         android:layout_width="106dp"
         android:layout_height="128dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:contentDescription="@string/thumbs_up"
+        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/like_outline" />
 
     <TextView
-        android:id="@+id/tvOr"
+        android:id="@+id/tvPOIor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/or"
-        android:textColor="@android:color/white"
         android:textSize="24sp"
         app:fontFamily="@font/fredoka_one"
-        app:layout_constraintBottom_toBottomOf="@+id/ivThumbsUp"
-        app:layout_constraintEnd_toStartOf="@+id/ivThumbsDown"
-        app:layout_constraintStart_toEndOf="@+id/ivThumbsUp"
-        app:layout_constraintTop_toTopOf="@+id/ivThumbsUp" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivLikeOutline"
+        app:layout_constraintEnd_toStartOf="@+id/ivDislikeOutline"
+        app:layout_constraintStart_toEndOf="@+id/ivLikeOutline"
+        app:layout_constraintTop_toTopOf="@+id/ivLikeOutline" />
 
     <ImageView
-        android:id="@+id/ivThumbsDown"
+        android:id="@+id/ivDislikeOutline"
         android:layout_width="112dp"
         android:layout_height="127dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:contentDescription="@string/thumbs_down"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivThumbsUp"
+        app:layout_constraintTop_toTopOf="@+id/ivLikeOutline"
         app:srcCompat="@drawable/dislike_outline" />
 
     <TextView
