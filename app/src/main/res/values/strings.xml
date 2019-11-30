@@ -6,11 +6,6 @@
     <string name="app_description">shows on the TVDB to\nget highly detailed\nrecommendations on\nwhat to watch next</string>
     <string name="btn_continue">Continue</string>
     <string name="recommended">Recommended</string>
-
-    <string name="personofinterest_name">person+of+interest</string>
-    <string name="showdetails_download_error">There was an error download the show details for %1$s.</string>
-    <string name="showdetails_json_error">Error processing the show details.</string>
-
     <string name="personofinterest_poster">Person of Interest Poster</string>
     <string name="blindspot_poster">Blindspot Poster</string>
     <string name="agentx_poster">Agent X Poster</string>
@@ -18,7 +13,18 @@
     <string name="theloomingtower_poster">The Looming Tower Poster</string>
     <string name="ncisla_poster">NCIS LA Poster</string>
     <string name="taken_poster">Taken Poster</string>
-
     <string name="show_thumb">Show Thumb</string>
-    <string name="show_stats">2011 / CBS / TV-14</string>
-    </resources>
+    <string name="prime_video">Prime Video Logo</string>
+    <string name="down_arrow">Down Arrow</string>
+    <string name="back_arrow">Back Arrow</string>
+
+    <string name="showdetails_download_error">There was an error download the show details for %1$s.</string>
+    <string name="showdetails_json_error">Error processing the show details.</string>
+
+    <string name="personofinterest_name">Person+of+Interest</string>
+    <string name="stream_personofinterest">Stream Person of Interest</string>
+    <string name="loved_personofinterest">People that loved Person of Interest, enjoyed</string>
+
+    <string name="shared_prefs_filename" translatable="false">uk.ac.rgu.rectv</string>
+    <string name="shared_pref_personofinterest_liked" translatable="false">Person of Interest Liked or Disliked</string>
+</resources>
