@@ -50,7 +50,16 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
             // To launch web browser when Amazon Logo is clicked
         } else if (view.getId() == R.id.ivPrimeVideo) {
             launchWeb();
-        }
+    } else if (view.getId() == R.id.ivLikeOutline) {
+        // Set Shared Preferences variable to true
+        boolean personofinterest_liked = true;
+            // Change image to LikeIcon
+
+    } else if (view.getId() == R.id.ivDislikeOutline) {
+        // Set Shared Preferences variable to false
+        boolean personofinterest_liked = false;
+        // Change image to LikeIcon
+    }
     }
 
     // Method to launch Implicit Intent to load the web browser
@@ -66,6 +75,13 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onPause() {
         super.onPause();
+        // Get the Shared Preferences editor
         SharedPreferences.Editor sharedPrefsEditor = this.sharedPrefs.edit();
+
+        // Store if Like icon has been clicked or not
+        sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_personofinterest_liked), boolean personofinterest_liked)
+
+        // Apply the edits to Shared Preferences
+        sharedPrefsEditor.apply();
     }
 }

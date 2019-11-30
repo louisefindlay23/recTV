@@ -22,4 +22,5 @@
     <string name="stream_personofinterest">Stream Person of Interest</string>
 
     <string name="shared_prefs_filename" translatable="false">uk.ac.rgu.rectv</string>
+    <string name="shared_pref_personofinterest_liked" translatable="false">Person of Interest Liked or Disliked</string>
 </resources>
