@@ -22,7 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ShowPart2Activity extends AppCompatActivity implements View.OnClickListener {
+public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickListener {
 
     private SharedPreferences sharedPrefs;
     private boolean personofinterest_liked;
@@ -36,7 +36,7 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_part2);
+        setContentView(R.layout.activity_show_poi2);
 
         // get the Back Arrow button
         ImageView ivBackArrow = findViewById(R.id.ivBackArrow);
@@ -148,7 +148,7 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         // view is the View (Button, ExitText, TextView, etc) that was clicked
         if (view.getId() == R.id.ivBackArrow) {
             // create an intent
-            Intent intent = new Intent(getApplicationContext(), ShowActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ShowPOIActivity.class);
             // start the Activity
             startActivity(intent);
             // To launch web browser when Amazon Logo is clicked

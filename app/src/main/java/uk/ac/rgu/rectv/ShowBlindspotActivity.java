@@ -20,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ShowActivity extends AppCompatActivity implements View.OnClickListener {
+public class ShowBlindspotActivity extends AppCompatActivity implements View.OnClickListener {
 
     // TAG to be used when logging
     private static final String TAG = RecommendationsActivity.class.getCanonicalName();
@@ -31,7 +31,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show);
+        setContentView(R.layout.activity_show_blindspot);
 
         // get the AppName button
         Button btnAppName = findViewById(R.id.btnAppName);
@@ -40,7 +40,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         btnAppName.setOnClickListener(this);
 
         // get the Down Arrow image
-        ImageView ivDownArrow = findViewById(R.id.ivDownArrow);
+        ImageView ivDownArrow = findViewById(R.id.ivBlindspotDownArrow);
 
         // set the click listener to the ivDownArrow
         ivDownArrow.setOnClickListener(this);
@@ -54,7 +54,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
 
     public void downloadShowDescription(){
         // Downloads and displays a show description from the OMDB API
-        String getShowNameForShowMetadata = (getString(R.string.personofinterest_name));
+        String getShowNameForShowMetadata = (getString(R.string.blindspot_name));
 
         Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
 
@@ -72,7 +72,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onResponse(String response) {
                         StringBuilder showDescription = new StringBuilder();
-                        TextView tvShowDescriptionDisplay = findViewById(R.id.tvShowDescription);
+                        TextView tvShowDescriptionDisplay = findViewById(R.id.tvBlindspotShowDescription);
 
                         try {
                             JSONObject responseObj = new JSONObject(response);
@@ -93,7 +93,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                TextView tvShowDescriptionDisplay = findViewById(R.id.tvShowDescription);
+                TextView tvShowDescriptionDisplay = findViewById(R.id.tvBlindspotShowDescription);
                 tvShowDescriptionDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
@@ -105,7 +105,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
 
     public void downloadShowStats(){
         // Downloads and displays the Show Stats from OMDB API
-        String getShowNameForShowMetadata = (getString(R.string.personofinterest_name));
+        String getShowNameForShowMetadata = (getString(R.string.blindspot_name));
 
         Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
 
@@ -123,7 +123,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onResponse(String response) {
                         StringBuilder showDescription = new StringBuilder();
-                        TextView tvShowStats = findViewById(R.id.tvShowStats);
+                        TextView tvShowStats = findViewById(R.id.tvBlindspotShowStats);
 
                         try {
                             JSONObject responseObj = new JSONObject(response);
@@ -146,7 +146,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                TextView tvShowStats = findViewById(R.id.tvShowStats);
+                TextView tvShowStats = findViewById(R.id.tvBlindspotShowStats);
                 tvShowStats.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
@@ -168,7 +168,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
 
         else if (view.getId() == R.id.ivDownArrow) {
             // create an intent
-            Intent intent = new Intent(getApplicationContext(), ShowPart2Activity.class);
+            Intent intent = new Intent(getApplicationContext(), ShowPOI2Activity.class);
             // start the Activity
             startActivity(intent);
         }

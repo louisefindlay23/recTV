@@ -40,6 +40,16 @@
     <string name="hated_personofinterest">People that disliked Person of Interest, instead watched</string>
     <string name="dislikedrecommendations_personofinterest">Numb3rs\nChuck\nScorpion\nBurn Notice</string>
 
+    <string name="blindspot_name">blindspot</string>
+    <string name="blindspot_tmbdid">62710</string>
+
+    <string name="stream_blindspot">Stream Blindspot</string>
+
+    <string name="loved_blindspot">People that loved Blindspot, enjoyed</string>
+    <string name="hated_blindspot">People that disliked Blindspot, instead watched</string>
+    <string name="dislikedrecommendations_blindspot">Numb3rs\nChuck\nScorpion\nBurn Notice</string>
+
     <string name="shared_prefs_filename" translatable="false">uk.ac.rgu.rectv</string>
     <string name="shared_pref_personofinterest_liked" translatable="false">Person of Interest Liked or Disliked</string>
+    <string name="shared_pref_blindspot_liked" translatable="false">Blindspot Liked or Disliked</string>
 </resources>
