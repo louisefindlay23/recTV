@@ -7,6 +7,30 @@
     android:background="@android:color/background_dark"
     tools:context=".ShowPart2Activity">
 
+    <TextView
+        android:id="@+id/tvStreamPersonofInterest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/stream_personofinterest"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:fontFamily="@font/fredoka_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivPrimeVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/prime_video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStreamPersonofInterest"
+        app:srcCompat="@drawable/prime_video" />
+
     <ImageView
         android:id="@+id/ivLikeOutline"
         android:layout_width="89dp"
@@ -14,6 +38,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
+        android:contentDescription="@string/like_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPrimeVideo"
         app:srcCompat="@drawable/like_outline" />
@@ -38,33 +63,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:contentDescription="@string/dislike_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ivLikeOutline"
         app:srcCompat="@drawable/dislike_outline" />
-
-    <TextView
-        android:id="@+id/tvStreamPersonofInterest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/stream_personofinterest"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        app:fontFamily="@font/fredoka_one"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivPrimeVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:contentDescription="@string/prime_video"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStreamPersonofInterest"
-        app:srcCompat="@drawable/prime_video" />
 
     <TextView
         android:id="@+id/tvPersonofInterestLoved"
