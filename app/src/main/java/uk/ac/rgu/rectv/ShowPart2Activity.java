@@ -6,14 +6,32 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ShowPart2Activity extends AppCompatActivity implements View.OnClickListener {
 
     private SharedPreferences sharedPrefs;
     private boolean personofinterest_liked;
+
+    // TAG to be used when logging
+    private static final String TAG = RecommendationsActivity.class.getCanonicalName();
+
+    // constant for downloading show data
+    private static final String SHOW_URL_TEMPLATE = "https://api.themoviedb.org/3/tv/%s/similar?api_key=71fe3c36cb7df73b77feb2703d8c178c&language=en-US&page=1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +56,7 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         // set the click listener to the like outline
         ivLikeOutline.setOnClickListener(this);
 
-        // get the Disike Outline image
+        // get the Dislike Outline image
         ImageView ivDisikeOutline = findViewById(R.id.ivDislikeOutline);
 
         // set the click listener to the dislike outline
@@ -62,6 +80,63 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Disliked");
         }
+
+        // Download related shows
+        downloadRelatedShows();
+
+    }
+
+    public void downloadRelatedShows(){
+        // Downloads and displays a show description from the OMDB API
+        String getShowNameForShowMetadata = (getString(R.string.personofinterest_tmbdid));
+
+        Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
+
+        // if there's no show name to download details for then exit
+        if (getShowNameForShowMetadata == null) {
+            return;
+        }
+
+        // build string for the URL to get the show details from
+        String url = String.format(SHOW_URL_TEMPLATE, getShowNameForShowMetadata);
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        StringBuilder showRecommendations = new StringBuilder();
+                        TextView tvRecommendations = findViewById(R.id.tvRecommendations);
+
+                        try {
+                            JSONObject responseObj = new JSONObject(response);
+                            JSONArray resultsArray = responseObj.getJSONArray("results");
+                            for (int i = 0, j = resultsArray.length(); i < j ; i++){
+                                JSONObject resultsObj = resultsArray.getJSONObject(i);
+                                showRecommendations.append(resultsObj.getString("name")).append("\n");
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (showRecommendations.length() == 0){
+                            tvRecommendations.setText(getString(R.string.showdetails_json_error));
+                        } else {
+                            tvRecommendations.setText(showRecommendations.toString());
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                TextView tvShowDescriptionDisplay = findViewById(R.id.tvShowDescription);
+                tvShowDescriptionDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
+            }
+        });
+
+        // make the request to download the show details
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        queue.add(stringRequest);
     }
 
     // Changing Activity

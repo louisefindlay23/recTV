@@ -13,9 +13,7 @@
         android:layout_height="77dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPrimeVideo"
         app:srcCompat="@drawable/like_outline" />
 
     <TextView
@@ -23,7 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/or"
-        android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:fontFamily="@font/fredoka_one"
         app:layout_constraintBottom_toBottomOf="@+id/ivLikeOutline"
@@ -35,6 +32,8 @@
         android:id="@+id/ivDislikeOutline"
         android:layout_width="89dp"
         android:layout_height="77dp"
+        android:layout_width="112dp"
+        android:layout_height="127dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
@@ -53,7 +52,6 @@
         app:fontFamily="@font/fredoka_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivPrimeVideo"
@@ -79,13 +77,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.621"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLikeOutline" />
 
     <TextView
-        android:id="@+id/tvRecomendationsPersonofInterest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:fontFamily="@font/fredoka_one"
+        app:layout_constraintBottom_toTopOf="@+id/ivBackArrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPersonofInterestLoved" />

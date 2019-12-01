@@ -22,6 +22,7 @@
     <string name="showdetails_json_error">Error processing the show details.</string>
 
     <string name="personofinterest_name">Person+of+Interest</string>
+    <string name="personofinterest_tmbdid">1411</string>
     <string name="stream_personofinterest">Stream Person of Interest</string>
     <string name="loved_personofinterest">People that loved Person of Interest, enjoyed</string>
 
