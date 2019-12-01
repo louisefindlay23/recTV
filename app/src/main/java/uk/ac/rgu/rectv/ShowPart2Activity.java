@@ -74,15 +74,18 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
             ivDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Liked");
+            // Download related shows
+            downloadRelatedShows();
         } else if (personofinterest_liked == false) {
             ivLikeOutline.setImageResource(R.drawable.like_outline);
             ivDislikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Disliked");
+            TextView tvPersonofIntereststatus = findViewById(R.id.tvPersonofInterestLoved);
+            tvPersonofIntereststatus.setText(getString(R.string.hated_personofinterest));
+            TextView tvRecommendations = findViewById(R.id.tvRecommendations);
+            tvRecommendations.setText(getString(R.string.dislikedrecommendations_personofinterest));
         }
-
-        // Download related shows
-        downloadRelatedShows();
 
     }
 
@@ -161,6 +164,10 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
             ivDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Liked");
+            TextView tvPersonofIntereststatus = findViewById(R.id.tvPersonofInterestLoved);
+            tvPersonofIntereststatus.setText(getString(R.string.loved_personofinterest));
+            // Download related shows
+            downloadRelatedShows();
     } else if (view.getId() == R.id.ivDislikeOutline) {
         // Set Shared Preferences variable to false
         personofinterest_liked = false;
@@ -171,6 +178,10 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
             ivDislikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Disliked");
+            TextView tvPersonofIntereststatus = findViewById(R.id.tvPersonofInterestLoved);
+            tvPersonofIntereststatus.setText(getString(R.string.hated_personofinterest));
+            TextView tvRecommendations = findViewById(R.id.tvRecommendations);
+            tvRecommendations.setText(getString(R.string.dislikedrecommendations_personofinterest));
     }
     }
 
