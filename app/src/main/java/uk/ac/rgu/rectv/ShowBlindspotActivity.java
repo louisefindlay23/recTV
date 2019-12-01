@@ -166,7 +166,7 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
             startActivity(intent);
         }
 
-        else if (view.getId() == R.id.ivDownArrow) {
+        else if (view.getId() == R.id.ivBlindspotDownArrow) {
             // create an intent
             Intent intent = new Intent(getApplicationContext(), ShowPOI2Activity.class);
             // start the Activity
