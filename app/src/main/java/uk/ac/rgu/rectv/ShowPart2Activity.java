@@ -57,10 +57,10 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         ivLikeOutline.setOnClickListener(this);
 
         // get the Dislike Outline image
-        ImageView ivDisikeOutline = findViewById(R.id.ivDislikeOutline);
+        ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
 
         // set the click listener to the dislike outline
-        ivDisikeOutline.setOnClickListener(this);
+        ivDislikeOutline.setOnClickListener(this);
 
         // instantiate sharedPrefs
         this.sharedPrefs = getSharedPreferences(getString(R.string.shared_prefs_filename), MODE_PRIVATE);
@@ -71,12 +71,12 @@ public class ShowPart2Activity extends AppCompatActivity implements View.OnClick
         // If the show is liked or disliked
         if(personofinterest_liked == true){
             ivLikeOutline.setImageResource(R.drawable.like_icon);
-            ivDisikeOutline.setImageResource(R.drawable.dislike_outline);
+            ivDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Liked");
         } else if (personofinterest_liked == false) {
             ivLikeOutline.setImageResource(R.drawable.like_outline);
-            ivDisikeOutline.setImageResource(R.drawable.dislike_icon);
+            ivDislikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText("Disliked");
         }

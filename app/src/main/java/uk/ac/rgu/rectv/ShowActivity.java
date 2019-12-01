@@ -161,7 +161,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         // view is the View (Button, ExitText, TextView, etc) that was clicked
         if (view.getId() == R.id.btnAppName) {
             // create an intent
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), RecommendationsActivity.class);
             // start the Activity
             startActivity(intent);
         }
