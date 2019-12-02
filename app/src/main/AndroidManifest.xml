@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ShowBlindspot2Activity"></activity>
+        <activity android:name=".ShowNCISLA2Activity"></activity>
+        <activity android:name=".ShowNCISLAActivity" />
+        <activity android:name=".ShowBlindspot2Activity" />
         <activity android:name=".ShowBlindspotActivity" />
         <activity android:name=".ShowPOI2Activity" />
         <activity

@@ -32,6 +32,12 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
 
         // set the click listener to the Blindspot Poster image
         ivBlindspotPoster.setOnClickListener(this);
+
+        // get the NCIS LA Poster image
+        ImageView ivNCISLAPoster = findViewById(R.id.ivNCISLAPoster);
+
+        // set the click listener to the NCIS LA Poster image
+        ivNCISLAPoster.setOnClickListener(this);
     }
 
     // Changing Activity
@@ -55,6 +61,13 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
         else if (view.getId() == R.id.ivBlindspotPoster) {
             // create an intent
             Intent intent = new Intent(getApplicationContext(), ShowBlindspotActivity.class);
+            // start the Activity
+            startActivity(intent);
+        }
+
+        else if (view.getId() == R.id.ivNCISLAPoster) {
+            // create an intent
+            Intent intent = new Intent(getApplicationContext(), ShowNCISLAActivity.class);
             // start the Activity
             startActivity(intent);
         }

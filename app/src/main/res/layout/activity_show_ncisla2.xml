@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_dark"
-    tools:context=".ShowPOI2Activity">
+    android:background="@android:color/black"
+    tools:context=".ShowNCISLA2Activity">
 
     <TextView
-        android:id="@+id/tvStreamPersonofInterest"
+        android:id="@+id/tvStreamNCISLA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/stream_personofinterest"
+        android:text="@string/stream_ncisla"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:fontFamily="@font/fredoka_one"
@@ -21,18 +21,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ivPrimeVideo"
+        android:id="@+id/ivNCISLAPrimeVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/prime_video"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStreamPersonofInterest"
+        app:layout_constraintTop_toBottomOf="@+id/tvStreamNCISLA"
         app:srcCompat="@drawable/prime_video" />
 
     <ImageView
-        android:id="@+id/ivLikeOutline"
+        android:id="@+id/ivNCISLALikeOutline"
         android:layout_width="89dp"
         android:layout_height="77dp"
         android:layout_marginStart="32dp"
@@ -40,21 +40,21 @@
         android:layout_marginTop="32dp"
         android:contentDescription="@string/like_icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPrimeVideo"
+        app:layout_constraintTop_toBottomOf="@+id/ivNCISLAPrimeVideo"
         app:srcCompat="@drawable/like_outline" />
 
     <TextView
-        android:id="@+id/tvPOIor"
+        android:id="@+id/tvNCISLAor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/or"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:fontFamily="@font/fredoka_one"
-        app:layout_constraintBottom_toBottomOf="@+id/ivLikeOutline"
+        app:layout_constraintBottom_toBottomOf="@+id/ivNCISLALikeOutline"
         app:layout_constraintEnd_toStartOf="@+id/ivNCISLADislikeOutline"
-        app:layout_constraintStart_toEndOf="@+id/ivLikeOutline"
-        app:layout_constraintTop_toTopOf="@+id/ivLikeOutline" />
+        app:layout_constraintStart_toEndOf="@+id/ivNCISLALikeOutline"
+        app:layout_constraintTop_toTopOf="@+id/ivNCISLALikeOutline" />
 
     <ImageView
         android:id="@+id/ivNCISLADislikeOutline"
@@ -65,26 +65,26 @@
         android:layout_marginRight="32dp"
         android:contentDescription="@string/dislike_icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivLikeOutline"
+        app:layout_constraintTop_toTopOf="@+id/ivNCISLALikeOutline"
         app:srcCompat="@drawable/dislike_outline" />
 
     <TextView
-        android:id="@+id/tvPersonofInterestLoved"
+        android:id="@+id/tvNCISLALoved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:gravity="center"
-        android:text="@string/loved_personofinterest"
+        android:text="@string/loved_ncisla"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:fontFamily="@font/fredoka_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.621"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLikeOutline" />
+        app:layout_constraintTop_toBottomOf="@+id/ivNCISLALikeOutline" />
 
     <TextView
-        android:id="@+id/tvRecommendations"
+        android:id="@+id/tvNCISLARecommendations"
         android:layout_width="0dp"
         android:layout_height="95dp"
         android:layout_marginTop="8dp"
@@ -92,13 +92,13 @@
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         app:fontFamily="@font/lato"
-        app:layout_constraintBottom_toTopOf="@+id/ivBackArrow"
+        app:layout_constraintBottom_toTopOf="@+id/ivNCISLABackArrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPersonofInterestLoved" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNCISLALoved" />
 
     <ImageView
-        android:id="@+id/ivBackArrow"
+        android:id="@+id/ivNCISLABackArrow"
         android:layout_width="76dp"
         android:layout_height="93dp"
         android:layout_marginBottom="16dp"
@@ -107,5 +107,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/left_arrow" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

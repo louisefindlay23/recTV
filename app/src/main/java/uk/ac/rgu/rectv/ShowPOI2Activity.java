@@ -57,7 +57,7 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
         ivLikeOutline.setOnClickListener(this);
 
         // get the Dislike Outline image
-        ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
+        ImageView ivDislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
 
         // set the click listener to the dislike outline
         ivDislikeOutline.setOnClickListener(this);
@@ -160,7 +160,7 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
             // Change image to LikeIcon
             ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
             ivLikeOutline.setImageResource(R.drawable.like_icon);
-            ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
+            ImageView ivDislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
             ivDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText(getString(R.string.liked));
@@ -168,13 +168,13 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
             tvPersonofIntereststatus.setText(getString(R.string.loved_personofinterest));
             // Download related shows
             downloadRelatedShows();
-    } else if (view.getId() == R.id.ivDislikeOutline) {
+    } else if (view.getId() == R.id.ivNCISLADislikeOutline) {
         // Set Shared Preferences variable to false
         personofinterest_liked = false;
         // Change image to LikeIcon
             ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
             ivLikeOutline.setImageResource(R.drawable.like_outline);
-            ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
+            ImageView ivDislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
             ivDislikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText(R.string.disliked);

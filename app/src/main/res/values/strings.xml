@@ -49,7 +49,17 @@
     <string name="hated_blindspot">People that disliked Blindspot, instead watched</string>
     <string name="dislikedrecommendations_blindspot">Bones\nCastle\nNCIS\nMysteries of Laura</string>
 
+    <string name="ncisla_name">ncis+los+angeles</string>
+    <string name="ncisla_tmbdid">17610</string>
+
+    <string name="stream_ncisla">Stream NCIS: Los Angeles</string>
+
+    <string name="loved_ncisla">People that loved NCIS: Los Angeles, enjoyed</string>
+    <string name="hated_ncisla">People that disliked NCIS: Los Angeles, instead watched</string>
+    <string name="dislikedrecommendations_ncisla">Elementary\nBerlin Station\nHomeland\nSpooks</string>
+
     <string name="shared_prefs_filename" translatable="false">uk.ac.rgu.rectv</string>
     <string name="shared_pref_personofinterest_liked" translatable="false">Person of Interest Liked or Disliked</string>
     <string name="shared_pref_blindspot_liked" translatable="false">Blindspot Liked or Disliked</string>
+    <string name="shared_pref_ncisla_liked" translatable="false">NCIS: Los Angeles Liked or Disliked</string>
 </resources>
