@@ -33,14 +33,10 @@ public class ShowNameRecyclerViewAdapter extends RecyclerView.Adapter<ShowNameRe
 
     @Override
     public void onBindViewHolder(@NonNull ShowNameRecyclerViewAdapter.ShowNameViewHolder holder, int position) {
-        ShowName = shownameToBeDisplayed = this.shownames.get(position);
+        ShowName shownameToBeDisplayed = this.shownames.get(position);
 
         TextView tvShowName = holder.itemView.findViewById(R.id.tvShowName);
-        tvShowName.setText(shownameToBeDisplayed.getName());
-
-        // If a Show Name is selected - to eventually navigate to that specfic ShowName Activity
-        // if (shownameToBeDisplayed.isSelected()){
-        // }
+        tvShowName.setText(shownameToBeDisplayed.getReference());
     }
 
     @Override
@@ -53,13 +49,10 @@ public class ShowNameRecyclerViewAdapter extends RecyclerView.Adapter<ShowNameRe
         private ShowNameRecyclerViewAdapter adapter;
         private View itemView;
 
-        private ShowNameViewHolder(ShowNameRecyclerViewAdapter adapter, View itemView) {
+        public ShowNameViewHolder(ShowNameRecyclerViewAdapter adapter, View itemView) {
             super(itemView);
             this.adapter = adapter;
             this.itemView = itemView;
-        }
-        public ShowNameViewHolder(){
-
         }
     }
 }

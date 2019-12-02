@@ -1,10 +1,6 @@
 package uk.ac.rgu.rectv;
-
 import java.util.Date;
 
-/**
- * Represents a teaching Module
- */
 public class ShowName {
     private int uid;
     private String reference;
