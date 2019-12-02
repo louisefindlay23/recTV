@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ShowBlindspot2Activity"></activity>
         <activity android:name=".ShowBlindspotActivity" />
         <activity android:name=".ShowPOI2Activity" />
         <activity

@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class ShowPOIActivity extends AppCompatActivity implements View.OnClickListener {
 
     // TAG to be used when logging
-    private static final String TAG = RecommendationsActivity.class.getCanonicalName();
+    private static final String TAG = ShowPOIActivity.class.getCanonicalName();
 
     // constant for downloading show data
     private static final String SHOW_URL_TEMPLATE = "http://www.omdbapi.com/?t=%s&apikey=4c1aac0f";

@@ -28,7 +28,7 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
     private boolean personofinterest_liked;
 
     // TAG to be used when logging
-    private static final String TAG = RecommendationsActivity.class.getCanonicalName();
+    private static final String TAG = ShowPOI2Activity.class.getCanonicalName();
 
     // constant for downloading show data
     private static final String SHOW_URL_TEMPLATE = "https://api.themoviedb.org/3/tv/%s/similar?api_key=71fe3c36cb7df73b77feb2703d8c178c&language=en-US&page=1";

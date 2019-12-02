@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".ShowBlindspot2Activity">
+
+    <TextView
+        android:id="@+id/tvStreamBlindspot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/stream_blindspot"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:fontFamily="@font/fredoka_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivBlindspotAmazonVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/prime_video"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStreamBlindspot"
+        app:srcCompat="@drawable/amazon_video" />
+
+    <ImageView
+        android:id="@+id/ivBlindspotGooglePlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:contentDescription="@string/prime_video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStreamBlindspot"
+        app:srcCompat="@drawable/google_video" />
+
+    <ImageView
+        android:id="@+id/ivBlindspotLikeOutline"
+        android:layout_width="89dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/like_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBlindspotAmazonVideo"
+        app:srcCompat="@drawable/like_outline" />
+
+    <TextView
+        android:id="@+id/tvBlindspotor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/or"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:fontFamily="@font/fredoka_one"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBlindspotLikeOutline"
+        app:layout_constraintEnd_toStartOf="@+id/ivBlindspotDislikeOutline"
+        app:layout_constraintStart_toEndOf="@+id/ivBlindspotLikeOutline"
+        app:layout_constraintTop_toTopOf="@+id/ivBlindspotLikeOutline" />
+
+    <ImageView
+        android:id="@+id/ivBlindspotDislikeOutline"
+        android:layout_width="89dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:contentDescription="@string/dislike_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBlindspotLikeOutline"
+        app:srcCompat="@drawable/dislike_outline" />
+
+    <TextView
+        android:id="@+id/tvBlindspotLoved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:text="@string/loved_blindspot"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:fontFamily="@font/fredoka_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBlindspotLikeOutline" />
+
+    <TextView
+        android:id="@+id/tvBlindspotRecommendations"
+        android:layout_width="0dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:fontFamily="@font/lato"
+        app:layout_constraintBottom_toTopOf="@+id/ivBlindspotBackArrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBlindspotLoved" />
+
+    <ImageView
+        android:id="@+id/ivBlindspotBackArrow"
+        android:layout_width="76dp"
+        android:layout_height="93dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/back_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/left_arrow" />
+</androidx.constraintlayout.widget.ConstraintLayout>
