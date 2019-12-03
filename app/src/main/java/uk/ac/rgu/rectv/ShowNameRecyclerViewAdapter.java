@@ -1,7 +1,6 @@
 package uk.ac.rgu.rectv;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,7 @@ public class ShowNameRecyclerViewAdapter extends RecyclerView.Adapter<ShowNameRe
     @NonNull
     @Override
     public ShowNameRecyclerViewAdapter.ShowNameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View shownameView = this.inflater.inflate(R.layout.poster_row_item, parent, false);
+        View shownameView = this.inflater.inflate(R.layout.showname_item, parent, false);
         ShowNameViewHolder viewHolder = new ShowNameViewHolder(this, shownameView);
         return viewHolder;
     }
