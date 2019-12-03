@@ -79,8 +79,7 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
 
     private ShowName createShowNames(String EpisodeName){
         ShowName m = new ShowName();
-        m.setEpisodeName("Season 1 " + "Episode ");
-        m.setEpisodeNumber(1);
+        m.setEpisodeName(EpisodeName);
         return m;
     }
 
