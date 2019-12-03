@@ -58,6 +58,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBlindspotShowStats" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvShowName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivBlindspotDownArrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBlindspotShowDescription" />
+
     <ImageView
         android:id="@+id/ivBlindspotDownArrow"
         android:layout_width="63dp"
@@ -68,4 +77,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/down_arrow" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

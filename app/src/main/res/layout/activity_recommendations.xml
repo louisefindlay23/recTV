@@ -40,14 +40,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAppName" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/ivBlindspotPoster"
-        app:layout_constraintEnd_toEndOf="@+id/ivNCISLAPoster"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivBlindspotPoster" />
-
     <ImageView
         android:id="@+id/ivPersonofInterestPoster"
         android:layout_width="110dp"
@@ -136,14 +128,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFansofShooter"
         app:srcCompat="@drawable/taken_poster" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvShowName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivTheLoomingTower" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
