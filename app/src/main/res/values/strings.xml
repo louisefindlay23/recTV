@@ -31,6 +31,8 @@
     <string name="showdetails_download_error">There was an error download the show details for %1$s.</string>
     <string name="showdetails_json_error">Error processing the show details.</string>
 
+    <string name="season_1">Season 1</string>
+
     <string name="personofinterest_name">Person+of+Interest</string>
     <string name="personofinterest_tmbdid">1411</string>
 
