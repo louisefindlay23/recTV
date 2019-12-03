@@ -9,6 +9,7 @@
 
     <Button
         android:id="@+id/btnAppName"
+        style="@style/buttonStyle"
         android:layout_width="168dp"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"

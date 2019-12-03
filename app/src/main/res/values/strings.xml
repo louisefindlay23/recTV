@@ -10,14 +10,13 @@
     <string name="back_arrow">Back Arrow</string>
 
     <string name="recommended">Recommended</string>
-    <string name="fansofshooter">Fans of Shooter, also liked</string>
+    <string name="fansofpersonofinterest">Fans of Person of Interest, also liked</string>
+    <string name="hatersofpersonofinterest">Haters of Person of Interest, preferred</string>
 
     <string name="personofinterest_poster">Person of Interest Poster</string>
     <string name="blindspot_poster">Blindspot Poster</string>
-    <string name="agentx_poster">Agent X Poster</string>
-    <string name="theloomingtower_poster">The Looming Tower Poster</string>
-    <string name="ncisla_poster">NCIS LA Poster</string>
-    <string name="taken_poster">Taken Poster</string>
+    <string name="ncisla_poster">NCIS: LA Poster</string>
+    <string name="show_poster">TV Show Poster</string>
 
     <string name="show_thumb">Show Thumb</string>
     <string name="like_icon">Like Icon</string>

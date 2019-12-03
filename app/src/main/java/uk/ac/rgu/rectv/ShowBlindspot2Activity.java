@@ -218,7 +218,7 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
         SharedPreferences.Editor sharedPrefsEditor = this.sharedPrefs.edit();
 
         // Store if Like icon has been clicked or not
-        sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_personofinterest_liked), blindspot_liked);
+        sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_blindspot_liked), blindspot_liked);
 
         // Apply the edits to Shared Preferences
         sharedPrefsEditor.apply();

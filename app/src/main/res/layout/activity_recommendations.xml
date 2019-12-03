@@ -9,6 +9,7 @@
 
     <Button
         android:id="@+id/btnAppName"
+        style="@style/buttonStyle"
         android:layout_width="240dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
@@ -19,6 +20,7 @@
         android:background="@drawable/btn_rounded"
         android:text="@string/app_name"
         android:textSize="42sp"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/recommended"
@@ -46,7 +48,7 @@
         android:layout_height="176dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="@string/personofinterest_poster"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRecommended"
@@ -78,11 +80,12 @@
         app:srcCompat="@drawable/ncisla_poster" />
 
     <TextView
-        android:id="@+id/tvFansofShooter"
+        android:id="@+id/tvFansofPersonofInterest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="@string/fansofshooter"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/fansofpersonofinterest"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:fontFamily="@font/fredoka_one"
@@ -91,42 +94,40 @@
         app:layout_constraintTop_toBottomOf="@+id/ivBlindspotPoster" />
 
     <ImageView
-        android:id="@+id/ivAgentXPoster"
+        android:id="@+id/ivPoster4"
         android:layout_width="109dp"
         android:layout_height="158dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="60dp"
-        android:contentDescription="@string/agentx_poster"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/show_poster"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFansofShooter"
-        app:srcCompat="@drawable/agentx_poster" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFansofPersonofInterest"
+        app:srcCompat="@drawable/xenawarriorprincess_poster" />
 
     <ImageView
-        android:id="@+id/ivTheLoomingTower"
+        android:id="@+id/ivPoster5"
         android:layout_width="105dp"
         android:layout_height="156dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:contentDescription="@string/theloomingtower_poster"
-        app:layout_constraintEnd_toStartOf="@+id/ivTakenPoster"
-        app:layout_constraintStart_toEndOf="@+id/ivAgentXPoster"
-        app:layout_constraintTop_toBottomOf="@+id/tvFansofShooter"
-        app:srcCompat="@drawable/theloomingtower_poster" />
+        android:contentDescription="@string/show_poster"
+        app:layout_constraintEnd_toStartOf="@+id/ivPoster6"
+        app:layout_constraintStart_toEndOf="@+id/ivPoster4"
+        app:layout_constraintTop_toTopOf="@+id/ivPoster4"
+        app:srcCompat="@drawable/buffyvampireslayer_poster" />
 
     <ImageView
-        android:id="@+id/ivTakenPoster"
+        android:id="@+id/ivPoster6"
         android:layout_width="120dp"
         android:layout_height="169dp"
-        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:contentDescription="@string/taken_poster"
+        android:contentDescription="@string/show_poster"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFansofShooter"
-        app:srcCompat="@drawable/taken_poster" />
+        app:layout_constraintTop_toTopOf="@+id/ivPoster4"
+        app:srcCompat="@drawable/humans_poster" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

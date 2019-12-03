@@ -202,7 +202,7 @@ public class ShowNCISLA2Activity extends AppCompatActivity implements View.OnCli
         SharedPreferences.Editor sharedPrefsEditor = this.sharedPrefs.edit();
 
         // Store if Like icon has been clicked or not
-        sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_personofinterest_liked), ncisla_liked);
+        sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_ncisla_liked), ncisla_liked);
 
         // Apply the edits to Shared Preferences
         sharedPrefsEditor.apply();
