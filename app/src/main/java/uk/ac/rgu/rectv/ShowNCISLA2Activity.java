@@ -132,8 +132,8 @@ public class ShowNCISLA2Activity extends AppCompatActivity implements View.OnCli
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                TextView tvNCISLADescriptionDisplay = findViewById(R.id.tvNCISLAShowDescription);
-                tvNCISLADescriptionDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
+                TextView tvNCISLARecommendationsDisplay = findViewById(R.id.tvNCISLARecommendations);
+                tvNCISLARecommendationsDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 

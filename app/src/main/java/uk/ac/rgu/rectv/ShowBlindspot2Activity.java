@@ -138,8 +138,8 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                TextView tvBlindspotDescriptionDisplay = findViewById(R.id.tvBlindspotShowDescription);
-                tvBlindspotDescriptionDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
+                TextView tvBlindspotRecommendationsDisplay = findViewById(R.id.tvBlindspotRecommendations);
+                tvBlindspotRecommendationsDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 

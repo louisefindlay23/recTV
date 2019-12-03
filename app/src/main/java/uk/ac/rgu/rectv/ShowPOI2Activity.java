@@ -132,8 +132,8 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                TextView tvShowDescriptionDisplay = findViewById(R.id.tvShowDescription);
-                tvShowDescriptionDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
+                TextView tvRelatedShowDisplay = findViewById(R.id.tvRecommendations);
+                tvRelatedShowDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 
