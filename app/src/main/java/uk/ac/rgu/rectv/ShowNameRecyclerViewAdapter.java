@@ -36,7 +36,7 @@ public class ShowNameRecyclerViewAdapter extends RecyclerView.Adapter<ShowNameRe
         ShowName shownameToBeDisplayed = this.shownames.get(position);
 
         TextView tvShowName = holder.itemView.findViewById(R.id.tvShowName);
-        tvShowName.setText(shownameToBeDisplayed.getReference());
+        tvShowName.setText(shownameToBeDisplayed.getEpisodeName());
     }
 
     @Override

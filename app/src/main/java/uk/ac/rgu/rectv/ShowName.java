@@ -1,61 +1,30 @@
 package uk.ac.rgu.rectv;
-import java.util.Date;
 
 public class ShowName {
-    private int uid;
-    private String reference;
-    private int scqfCredits;
-    private Date createdOn;
-    private boolean registered;
+    private int episodeNumber;
+    private String episodeName;
 
-    public int getUid() {
-        return uid;
+    public int getEpisodeNumber() {
+        return episodeNumber;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setEpisodeNumber(int episodeNumber) {
+        this.episodeNumber = episodeNumber;
     }
 
-    public String getReference() {
-        return reference;
+    public String getEpisodeName() {
+        return episodeName;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    public int getScqfCredits() {
-        return scqfCredits;
-    }
-
-    public void setScqfCredits(int scqfCredits) {
-        this.scqfCredits = scqfCredits;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public boolean isRegistered() {
-        return registered;
-    }
-
-    public void setRegistered(boolean registered) {
-        this.registered = registered;
+    public void setEpisodeName(String episodeName) {
+        this.episodeName = episodeName;
     }
 
     @Override
     public String toString() {
-        return "Module{" +
-                "uid=" + uid +
-                ", reference='" + reference + '\'' +
-                ", SCQF credits=" + scqfCredits +
-                ", createdOn=" + createdOn +
-                ", registered=" + registered +
+        return "ShowName{" +
+                "EpisodeNumber=" + episodeNumber + '\'' +
+                ", EpisodeName=" + episodeName +
                 '}';
     }
 }

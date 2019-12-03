@@ -58,7 +58,7 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
         downloadShowStats();
 
         // get some mock data
-        List<ShowName> shownames = createShowNames(50);
+        List<ShowName> shownames = createShowNames(23);
 
         // Recycler View for Show Names
 
@@ -71,18 +71,16 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
     private List<ShowName> createShowNames(int number){
         List<ShowName> shownames = new ArrayList<ShowName>(number);
         for (int i = 0; i < number; i++){
-            ShowName showname = createShowNames("CM300" + i);
+            ShowName showname = createShowNames("" + i);
             shownames.add(showname);
         }
         return shownames;
     }
 
-    private ShowName createShowNames(String reference){
+    private ShowName createShowNames(String EpisodeName){
         ShowName m = new ShowName();
-        m.setReference(reference);
-        m.setRegistered(false);
-        m.setScqfCredits(15);
-        m.setCreatedOn(new Date());
+        m.setEpisodeName("Season 1 " + "Episode ");
+        m.setEpisodeNumber(1);
         return m;
     }
 
