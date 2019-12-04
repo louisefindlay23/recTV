@@ -74,8 +74,14 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
         // restore the value of if a TV Show was liked or not
         blindspot_liked = sharedPrefs.getBoolean(getString(R.string.shared_pref_blindspot_liked), true);
 
+        blindspotLikeorDislike();
+    }
+
+    public void blindspotLikeorDislike() {
         // If the show is liked or disliked
         if(blindspot_liked == true){
+            ImageView ivBlindspotLikeOutline = findViewById(R.id.ivBlindspotLikeOutline);
+            ImageView ivBlindspotDislikeOutline = findViewById(R.id.ivBlindspotDislikeOutline);
             ivBlindspotLikeOutline.setImageResource(R.drawable.like_icon);
             ivBlindspotDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvBlindspotor = findViewById(R.id.tvBlindspotor);
@@ -83,6 +89,8 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
             // Download related shows
             downloadRelatedShows();
         } else if (blindspot_liked == false) {
+            ImageView ivBlindspotLikeOutline = findViewById(R.id.ivBlindspotLikeOutline);
+            ImageView ivBlindspotDislikeOutline = findViewById(R.id.ivBlindspotDislikeOutline);
             ivBlindspotLikeOutline.setImageResource(R.drawable.like_outline);
             ivBlindspotDislikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvBlindspotor = findViewById(R.id.tvBlindspotor);
@@ -92,7 +100,6 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
             TextView tvBlindspotRecommendations = findViewById(R.id.tvBlindspotRecommendations);
             tvBlindspotRecommendations.setText(getString(R.string.dislikedrecommendations_blindspot));
         }
-
     }
 
     public void downloadRelatedShows(){
@@ -166,30 +173,12 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
             // Set Shared Preferences variable to true
             blindspot_liked = true;
             // Change image to LikeIcon
-            ImageView ivBlindspotLikeOutline = findViewById(R.id.ivBlindspotLikeOutline);
-            ivBlindspotLikeOutline.setImageResource(R.drawable.like_icon);
-            ImageView ivBlindspotDislikeOutline = findViewById(R.id.ivBlindspotDislikeOutline);
-            ivBlindspotDislikeOutline.setImageResource(R.drawable.dislike_outline);
-            TextView tvBlindspotor = findViewById(R.id.tvBlindspotor);
-            tvBlindspotor.setText(getString(R.string.liked));
-            TextView tvBlindspotstatus = findViewById(R.id.tvBlindspotLoved);
-            tvBlindspotstatus.setText(getString(R.string.loved_blindspot));
-            // Download related shows
-            downloadRelatedShows();
+            blindspotLikeorDislike();
         } else if (view.getId() == R.id.ivBlindspotDislikeOutline) {
             // Set Shared Preferences variable to false
             blindspot_liked = false;
             // Change image to LikeIcon
-            ImageView ivBlindspotLikeOutline = findViewById(R.id.ivBlindspotLikeOutline);
-            ivBlindspotLikeOutline.setImageResource(R.drawable.like_outline);
-            ImageView ivBlindspotDislikeOutline = findViewById(R.id.ivBlindspotDislikeOutline);
-            ivBlindspotDislikeOutline.setImageResource(R.drawable.dislike_icon);
-            TextView tvBlindspotor = findViewById(R.id.tvBlindspotor);
-            tvBlindspotor.setText(R.string.disliked);
-            TextView tvBlindspotstatus = findViewById(R.id.tvBlindspotLoved);
-            tvBlindspotstatus.setText(getString(R.string.hated_blindspot));
-            TextView tvBlindspotRecommendations = findViewById(R.id.tvBlindspotRecommendations);
-            tvBlindspotRecommendations.setText(getString(R.string.dislikedrecommendations_blindspot));
+            blindspotLikeorDislike();
         }
     }
 

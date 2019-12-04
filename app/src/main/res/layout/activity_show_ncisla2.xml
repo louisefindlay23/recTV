@@ -52,12 +52,12 @@
         android:textSize="24sp"
         app:fontFamily="@font/fredoka_one"
         app:layout_constraintBottom_toBottomOf="@+id/ivNCISLALikeOutline"
-        app:layout_constraintEnd_toStartOf="@+id/ivNCISLADislikeOutline"
+        app:layout_constraintEnd_toStartOf="@+id/ivDislikeOutline"
         app:layout_constraintStart_toEndOf="@+id/ivNCISLALikeOutline"
         app:layout_constraintTop_toTopOf="@+id/ivNCISLALikeOutline" />
 
     <ImageView
-        android:id="@+id/ivNCISLADislikeOutline"
+        android:id="@+id/ivDislikeOutline"
         android:layout_width="89dp"
         android:layout_height="77dp"
         android:layout_marginTop="8dp"

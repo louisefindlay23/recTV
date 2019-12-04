@@ -57,7 +57,7 @@ public class ShowNCISLA2Activity extends AppCompatActivity implements View.OnCli
         ivNCISLALikeOutline.setOnClickListener(this);
 
         // get the Dislike Outline image
-        ImageView ivNCISLADislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
+        ImageView ivNCISLADislikeOutline = findViewById(R.id.ivDislikeOutline);
 
         // set the click listener to the dislike outline
         ivNCISLADislikeOutline.setOnClickListener(this);
@@ -68,8 +68,14 @@ public class ShowNCISLA2Activity extends AppCompatActivity implements View.OnCli
         // restore the value of if a TV Show was liked or not
         ncisla_liked = sharedPrefs.getBoolean(getString(R.string.shared_pref_ncisla_liked), true);
 
+        ncislaLikeorDislike();
+    }
+
+    public void ncislaLikeorDislike() {
         // If the show is liked or disliked
-        if(ncisla_liked == true){
+        if (ncisla_liked == true) {
+            ImageView ivNCISLALikeOutline = findViewById(R.id.ivNCISLALikeOutline);
+            ImageView ivNCISLADislikeOutline = findViewById(R.id.ivDislikeOutline);
             ivNCISLALikeOutline.setImageResource(R.drawable.like_icon);
             ivNCISLADislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvNCISLAor = findViewById(R.id.tvNCISLAor);
@@ -77,6 +83,8 @@ public class ShowNCISLA2Activity extends AppCompatActivity implements View.OnCli
             // Download related shows
             downloadRelatedShows();
         } else if (ncisla_liked == false) {
+            ImageView ivNCISLALikeOutline = findViewById(R.id.ivNCISLALikeOutline);
+            ImageView ivNCISLADislikeOutline = findViewById(R.id.ivDislikeOutline);
             ivNCISLALikeOutline.setImageResource(R.drawable.like_outline);
             ivNCISLADislikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvNCISLAor = findViewById(R.id.tvNCISLAor);
@@ -86,7 +94,6 @@ public class ShowNCISLA2Activity extends AppCompatActivity implements View.OnCli
             TextView tvNCISLARecommendations = findViewById(R.id.tvNCISLARecommendations);
             tvNCISLARecommendations.setText(getString(R.string.dislikedrecommendations_ncisla));
         }
-
     }
 
     public void downloadRelatedShows(){
@@ -158,30 +165,12 @@ public class ShowNCISLA2Activity extends AppCompatActivity implements View.OnCli
             // Set Shared Preferences variable to true
             ncisla_liked = true;
             // Change image to LikeIcon
-            ImageView ivNCISLALikeOutline = findViewById(R.id.ivNCISLALikeOutline);
-            ivNCISLALikeOutline.setImageResource(R.drawable.like_icon);
-            ImageView ivNCISLADislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
-            ivNCISLADislikeOutline.setImageResource(R.drawable.dislike_outline);
-            TextView tvNCISLAor = findViewById(R.id.tvNCISLAor);
-            tvNCISLAor.setText(getString(R.string.liked));
-            TextView tvNCISLAstatus = findViewById(R.id.tvNCISLALoved);
-            tvNCISLAstatus.setText(getString(R.string.loved_ncisla));
-            // Download related shows
-            downloadRelatedShows();
-        } else if (view.getId() == R.id.ivNCISLADislikeOutline) {
+            ncislaLikeorDislike();
+        } else if (view.getId() == R.id.ivDislikeOutline) {
             // Set Shared Preferences variable to false
             ncisla_liked = false;
             // Change image to LikeIcon
-            ImageView ivNCISLALikeOutline = findViewById(R.id.ivNCISLALikeOutline);
-            ivNCISLALikeOutline.setImageResource(R.drawable.like_outline);
-            ImageView ivNCISLADislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
-            ivNCISLADislikeOutline.setImageResource(R.drawable.dislike_icon);
-            TextView tvNCISLAor = findViewById(R.id.tvNCISLAor);
-            tvNCISLAor.setText(R.string.disliked);
-            TextView tvNCISLAstatus = findViewById(R.id.tvNCISLALoved);
-            tvNCISLAstatus.setText(getString(R.string.hated_ncisla));
-            TextView tvNCISLARecommendations = findViewById(R.id.tvNCISLARecommendations);
-            tvNCISLARecommendations.setText(getString(R.string.dislikedrecommendations_ncisla));
+            ncislaLikeorDislike();
         }
     }
 

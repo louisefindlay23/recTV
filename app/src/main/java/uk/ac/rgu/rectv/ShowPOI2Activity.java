@@ -57,7 +57,7 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
         ivLikeOutline.setOnClickListener(this);
 
         // get the Dislike Outline image
-        ImageView ivDislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
+        ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
 
         // set the click listener to the dislike outline
         ivDislikeOutline.setOnClickListener(this);
@@ -68,8 +68,15 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
         // restore the value of if a TV Show was liked or not
         personofinterest_liked = sharedPrefs.getBoolean(getString(R.string.shared_pref_personofinterest_liked), true);
 
+        personofinterest_LikeorDislike();
+
+    }
+
+    public void personofinterest_LikeorDislike() {
         // If the show is liked or disliked
-        if(personofinterest_liked == true){
+        if (personofinterest_liked == true) {
+            ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
+            ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
             ivLikeOutline.setImageResource(R.drawable.like_icon);
             ivDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
@@ -77,6 +84,8 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
             // Download related shows
             downloadRelatedShows();
         } else if (personofinterest_liked == false) {
+            ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
+            ImageView ivDislikeOutline = findViewById(R.id.ivDislikeOutline);
             ivLikeOutline.setImageResource(R.drawable.like_outline);
             ivDislikeOutline.setImageResource(R.drawable.dislike_icon);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
@@ -86,7 +95,6 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
             TextView tvRecommendations = findViewById(R.id.tvRecommendations);
             tvRecommendations.setText(getString(R.string.dislikedrecommendations_personofinterest));
         }
-
     }
 
     public void downloadRelatedShows(){
@@ -158,30 +166,12 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
         // Set Shared Preferences variable to true
         personofinterest_liked = true;
             // Change image to LikeIcon
-            ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
-            ivLikeOutline.setImageResource(R.drawable.like_icon);
-            ImageView ivDislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
-            ivDislikeOutline.setImageResource(R.drawable.dislike_outline);
-            TextView tvPOIor = findViewById(R.id.tvPOIor);
-            tvPOIor.setText(getString(R.string.liked));
-            TextView tvPersonofIntereststatus = findViewById(R.id.tvPersonofInterestLoved);
-            tvPersonofIntereststatus.setText(getString(R.string.loved_personofinterest));
-            // Download related shows
-            downloadRelatedShows();
-    } else if (view.getId() == R.id.ivNCISLADislikeOutline) {
+            personofinterest_LikeorDislike();
+    } else if (view.getId() == R.id.ivDislikeOutline) {
         // Set Shared Preferences variable to false
         personofinterest_liked = false;
         // Change image to LikeIcon
-            ImageView ivLikeOutline = findViewById(R.id.ivLikeOutline);
-            ivLikeOutline.setImageResource(R.drawable.like_outline);
-            ImageView ivDislikeOutline = findViewById(R.id.ivNCISLADislikeOutline);
-            ivDislikeOutline.setImageResource(R.drawable.dislike_icon);
-            TextView tvPOIor = findViewById(R.id.tvPOIor);
-            tvPOIor.setText(R.string.disliked);
-            TextView tvPersonofIntereststatus = findViewById(R.id.tvPersonofInterestLoved);
-            tvPersonofIntereststatus.setText(getString(R.string.hated_personofinterest));
-            TextView tvRecommendations = findViewById(R.id.tvRecommendations);
-            tvRecommendations.setText(getString(R.string.dislikedrecommendations_personofinterest));
+            personofinterest_LikeorDislike();
     }
     }
 
