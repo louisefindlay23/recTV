@@ -15,21 +15,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // get the Continue button
+        // Get the Continue button which should be made clickable
         Button btnContinue = findViewById(R.id.btnContinue);
 
-        // set the click listener to the btnContinue Button
+        // Set the click listener to the btnContinue Button
         btnContinue.setOnClickListener(this);
     }
 
-    // Changing Activity
     @Override
     public void onClick(View view) {
-        // view is the View (Button, ExitText, TextView, etc) that was clicked
+        // If the continue button was clicked, start the Recommendations activity
         if (view.getId() == R.id.btnContinue) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), RecommendationsActivity.class);
-            // start the Activity
             startActivity(intent);
         }
     }

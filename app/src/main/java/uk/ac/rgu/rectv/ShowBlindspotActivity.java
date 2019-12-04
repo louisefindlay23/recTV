@@ -31,7 +31,7 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
     // TAG to be used when logging
     private static final String TAG = RecommendationsActivity.class.getCanonicalName();
 
-    // constant for downloading show data
+    // Constant for downloading show data
     private static final String SHOW_URL_TEMPLATE = "http://www.omdbapi.com/?t=%s&apikey=4c1aac0f";
 
     @Override
@@ -39,35 +39,31 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_blindspot);
 
-        // get the AppName button
+        // Get all the elements that should be made clickable
         Button btnAppName = findViewById(R.id.btnAppName);
-
-        // set the click listener to the btnAppName burtton
-        btnAppName.setOnClickListener(this);
-
-        // get the Down Arrow image
         ImageView ivDownArrow = findViewById(R.id.ivBlindspotDownArrow);
 
-        // set the click listener to the ivDownArrow
+        // Set click listeners to all clickable elements
+        btnAppName.setOnClickListener(this);
         ivDownArrow.setOnClickListener(this);
 
-        // Download show description from OMDB API
+        // When the activity has been started, run the ShowDescription method to populate the show description
         downloadShowDescription();
 
-        // Download show stats from OMDB API
+        // When the activity has been started, run the ShowStats method to populate the show's statistics
         downloadShowStats();
 
-        // get some mock data
+        // Create same number of list entries as episodes in Season 1
         List<ShowName> shownames = createShowNames(24);
 
-        // Recycler View for Show Names
-
+        // Set up RecyclerView for Show Names
         RecyclerView recyclerView = findViewById(R.id.rvShowName);
         ShowNameRecyclerViewAdapter adapter = new ShowNameRecyclerViewAdapter(getApplicationContext(), shownames);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
     }
 
+    // Create an ArrayList and for every list item add Episode string and a number increasing by one each time
     private List<ShowName> createShowNames(int number){
         List<ShowName> shownames = new ArrayList<ShowName>(number);
         for (int i = 1; i < number; i++){
@@ -76,7 +72,7 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
         }
         return shownames;
     }
-
+    // Set and return the ShowName and EpisodeName
     private ShowName createShowNames(String EpisodeName){
         ShowName m = new ShowName();
         m.setEpisodeName(EpisodeName);
@@ -84,68 +80,77 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
     }
 
     public void downloadShowDescription(){
-        // Downloads and displays a show description from the OMDB API
+        // Downloads TV show metadata using Volley from the Open Movie Database and parses the returning JSON to display the show description as a string
+
+        // Store the show name in order to download metadata
         String getShowNameForShowMetadata = (getString(R.string.blindspot_name));
 
         Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
 
-        // if there's no show name to download details for then exit
+        // If there's no show name to download details for then gracefully exit
         if (getShowNameForShowMetadata == null) {
             return;
         }
 
-        // build string for the URL to get the show details from
+        // Build string for the URL to get the show details from
         String url = String.format(SHOW_URL_TEMPLATE, getShowNameForShowMetadata);
 
-        // Request a string response from the provided URL.
+        // Request a string response from the provided URL
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        StringBuilder showDescription = new StringBuilder();
-                        TextView tvShowDescriptionDisplay = findViewById(R.id.tvBlindspotShowDescription);
+                        StringBuilder blindspotDescription = new StringBuilder();
+                        TextView tvBlindspotDescriptionDisplay = findViewById(R.id.tvBlindspotShowDescription);
 
+                        // Build JSONObjects to parse the JSON response to a more human-readable format
                         try {
                             JSONObject responseObj = new JSONObject(response);
                             String plotObj = responseObj.getString("Plot");
-                            // add the plot to the display
-                            showDescription.append("\n")
+                            // Add the returned show description to the display
+                            blindspotDescription.append("\n")
                                     .append(responseObj.getString("Plot"));
+
+                        // If there are any JSONException errors, print them in the log so the error can be diagnosed
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        if (showDescription.length() == 0){
-                            tvShowDescriptionDisplay.setText(getString(R.string.showdetails_json_error));
+                        // If there was an error in parsing the JSON, tell the user
+                        if (blindspotDescription.length() == 0){
+                            tvBlindspotDescriptionDisplay.setText(getString(R.string.showdetails_json_error));
                         } else {
-                            tvShowDescriptionDisplay.setText(showDescription.toString());
+                            tvBlindspotDescriptionDisplay.setText(blindspotDescription.toString());
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                // If there was a VolleyError downloading the show metadata, inform the user
                 TextView tvShowDescriptionDisplay = findViewById(R.id.tvBlindspotShowDescription);
                 tvShowDescriptionDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 
-        // make the request to download the show details
+        // Make the request to download the show details
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(stringRequest);
     }
 
     public void downloadShowStats(){
-        // Downloads and displays the Show Stats from OMDB API
+        // Downloads TV show metadata using Volley from the Open Movie Database and parses the returning JSON to display strings of year, episode runtime and age rating
+
+        // Store the show's name in order to download metadata
         String getShowNameForShowMetadata = (getString(R.string.blindspot_name));
 
         Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
 
-        // if there's no show name to download details for then exit
+        // If there's no show ID to download details for then gracefully exit
         if (getShowNameForShowMetadata == null) {
             return;
         }
 
-        // build string for the URL to get the show details from
+        // Build string for the URL to get the show details from
         String url = String.format(SHOW_URL_TEMPLATE, getShowNameForShowMetadata);
 
         // Request a string response from the provided URL.
@@ -153,54 +158,53 @@ public class ShowBlindspotActivity extends AppCompatActivity implements View.OnC
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        StringBuilder showDescription = new StringBuilder();
+                        StringBuilder showStats = new StringBuilder();
                         TextView tvShowStats = findViewById(R.id.tvBlindspotShowStats);
 
+                        // Build JSONObjects to parse the JSON response to a more human-readable format
                         try {
                             JSONObject responseObj = new JSONObject(response);
                             String yearObj = responseObj.getString("Year");
-                            // add the title to the display
-                            showDescription.append("\n")
+                            // Add the year, episode runtime and age rating returned to the display
+                            showStats.append("\n")
                                     .append(responseObj.getString("Year"))
                                     .append(" / ").append(responseObj.getString("Runtime"))
                                     .append(" / ").append(responseObj.getString("Rated"));
+                        // If there are any JSONException errors, print them in the log so the error can be diagnosed
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        if (showDescription.length() == 0){
+                        // If there was an error in parsing the JSON, tell the user
+                        if (showStats.length() == 0){
                             tvShowStats.setText(getString(R.string.showdetails_json_error));
                         } else {
-                            tvShowStats.setText(showDescription.toString());
+                            tvShowStats.setText(showStats.toString());
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                // If there was a VolleyError downloading the show metadata, inform the user
                 TextView tvShowStats = findViewById(R.id.tvBlindspotShowStats);
                 tvShowStats.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 
-        // make the request to download the show details
+        // Make the request to download the show details
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(stringRequest);
     }
-    // Changing Activity
     @Override
     public void onClick(View view) {
-        // view is the View (Button, ExitText, TextView, etc) that was clicked
+        // If a clickable element was clicked, start the appropriate activity
         if (view.getId() == R.id.btnAppName) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), RecommendationsActivity.class);
-            // start the Activity
             startActivity(intent);
         }
 
         else if (view.getId() == R.id.ivBlindspotDownArrow) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), ShowBlindspot2Activity.class);
-            // start the Activity
             startActivity(intent);
         }
     }

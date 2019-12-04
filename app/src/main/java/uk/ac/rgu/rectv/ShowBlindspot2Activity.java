@@ -30,7 +30,7 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
     // TAG to be used when logging
     private static final String TAG = ShowBlindspot2Activity.class.getCanonicalName();
 
-    // constant for downloading show data
+    // Constant for downloading show data
     private static final String SHOW_URL_TEMPLATE = "https://api.themoviedb.org/3/tv/%s/similar?api_key=71fe3c36cb7df73b77feb2703d8c178c&language=en-US&page=1";
 
     @Override
@@ -38,47 +38,32 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_blindspot2);
 
-        // get the Back Arrow button
+        // Get all the elements that should be made clickable
         ImageView ivBlindspotBackArrow = findViewById(R.id.ivBlindspotBackArrow);
-
-        // set the click listener to the back arrow
-        ivBlindspotBackArrow.setOnClickListener(this);
-
-        // get the Prime Video image
         ImageView ivBlindspotPrimeVideo = findViewById(R.id.ivBlindspotAmazonVideo);
-
-        // set the click listener to the Prime Video image
-        ivBlindspotPrimeVideo.setOnClickListener(this);
-
-        // get the Google Play image
         ImageView ivBlindspotGoogleVideo = findViewById(R.id.ivBlindspotGooglePlay);
-
-        // set the click listener to the Google Play image
-        ivBlindspotGoogleVideo.setOnClickListener(this);
-
-        // get the Like Outline image
         ImageView ivBlindspotLikeOutline = findViewById(R.id.ivBlindspotLikeOutline);
-
-        // set the click listener to the like outline
-        ivBlindspotLikeOutline.setOnClickListener(this);
-
-        // get the Dislike Outline image
         ImageView ivBlindspotDislikeOutline = findViewById(R.id.ivBlindspotDislikeOutline);
 
-        // set the click listener to the dislike outline
+        // Set click listeners to all clickable elements
+        ivBlindspotBackArrow.setOnClickListener(this);
+        ivBlindspotPrimeVideo.setOnClickListener(this);
+        ivBlindspotGoogleVideo.setOnClickListener(this);
+        ivBlindspotLikeOutline.setOnClickListener(this);
         ivBlindspotDislikeOutline.setOnClickListener(this);
 
-        // instantiate sharedPrefs
+        // Instantiate sharedPreferences
         this.sharedPrefs = getSharedPreferences(getString(R.string.shared_prefs_filename), MODE_PRIVATE);
 
-        // restore the value of if a TV Show was liked or not
+        // Restore the value in sharedPreferences if the TV Show was liked or not
         blindspot_liked = sharedPrefs.getBoolean(getString(R.string.shared_pref_blindspot_liked), true);
 
+        // When the activity has been started, run the LikeorDislike method to populate the recommendations
         blindspotLikeorDislike();
     }
 
     public void blindspotLikeorDislike() {
-        // If the show is liked or disliked
+        // If the show was liked or disliked, change the strings and icons accordingly
         if(blindspot_liked == true){
             ImageView ivBlindspotLikeOutline = findViewById(R.id.ivBlindspotLikeOutline);
             ImageView ivBlindspotDislikeOutline = findViewById(R.id.ivBlindspotDislikeOutline);
@@ -86,7 +71,7 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
             ivBlindspotDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvBlindspotor = findViewById(R.id.tvBlindspotor);
             tvBlindspotor.setText(getString(R.string.liked));
-            // Download related shows
+            // If the show was liked, run the downloadRelatedShows method to get similar shows
             downloadRelatedShows();
         } else if (blindspot_liked == false) {
             ImageView ivBlindspotLikeOutline = findViewById(R.id.ivBlindspotLikeOutline);
@@ -103,20 +88,22 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
     }
 
     public void downloadRelatedShows(){
-        // Downloads and displays a show description from the OMDB API
+        // Downloads TV show metadata using Volley from the Movie Database and parses the returning JSON to display strings of similar shows
+
+        // Store the show's Movie Database ID number in order to download metadata
         String getShowNameForShowMetadata = (getString(R.string.blindspot_tmbdid));
 
         Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
 
-        // if there's no show name to download details for then exit
+        // If there's no show ID to download details for then gracefully exit
         if (getShowNameForShowMetadata == null) {
             return;
         }
 
-        // build string for the URL to get the show details from
+        // Build the string for the URL to get the show details from
         String url = String.format(SHOW_URL_TEMPLATE, getShowNameForShowMetadata);
 
-        // Request a string response from the provided URL.
+        // Request a string response from the provided URL
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -124,18 +111,22 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
                         StringBuilder BlindspotRecommendations = new StringBuilder();
                         TextView tvBlindspotRecommendations = findViewById(R.id.tvBlindspotRecommendations);
 
+                        // Build JSONObjects to parse the JSON response to a more human-readable format
                         try {
                             JSONObject responseObj = new JSONObject(response);
                             JSONArray resultsArray = responseObj.getJSONArray("results");
                             for (int i = 0, j = resultsArray.length(); i < j ; i++){
                                 JSONObject resultsObj = resultsArray.getJSONObject(i);
+                                // Add the recommendations returned to the display
                                 BlindspotRecommendations.append(resultsObj.getString("name")).append("\n");
                             }
 
+                        // If there are any JSONException errors, print them in the log so the error can be diagnosed
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
+                        // If there was an error in parsing the JSON, tell the user
                         if (BlindspotRecommendations.length() == 0){
                             tvBlindspotRecommendations.setText(getString(R.string.showdetails_json_error));
                         } else {
@@ -145,45 +136,40 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                // If there was a VolleyError downloading the show metadata, inform the user
                 TextView tvBlindspotRecommendationsDisplay = findViewById(R.id.tvBlindspotRecommendations);
                 tvBlindspotRecommendationsDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 
-        // make the request to download the show details
+        // Make the request to download the show details
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(stringRequest);
     }
 
-    // Changing Activity
     @Override
     public void onClick(View view) {
-        // view is the View (Button, ExitText, TextView, etc) that was clicked
+        // If a clickable element was clicked, start the appropriate activity or method
         if (view.getId() == R.id.ivBlindspotBackArrow) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), ShowBlindspotActivity.class);
-            // start the Activity
             startActivity(intent);
-            // To launch web browser when Amazon Logo is clicked
+            // Run method to launch web browser to Amazon website
         } else if (view.getId() == R.id.ivBlindspotAmazonVideo) {
             launchAmazonWeb();
+            // Run method to launch Google Play
         } else if (view.getId() == R.id.ivBlindspotGooglePlay) {
             launchGooglePlayWeb();
+            // If the show's like or dislike status has been changed, update the boolean and run the LikeorDislike method again
         } else if (view.getId() == R.id.ivBlindspotLikeOutline) {
-            // Set Shared Preferences variable to true
             blindspot_liked = true;
-            // Change image to LikeIcon
             blindspotLikeorDislike();
         } else if (view.getId() == R.id.ivBlindspotDislikeOutline) {
-            // Set Shared Preferences variable to false
             blindspot_liked = false;
-            // Change image to LikeIcon
             blindspotLikeorDislike();
         }
     }
 
-    // Method to launch Implicit Intent to load the web browser
-
+    // Methods to launch the web browser to streaming and on demand services
     private void launchAmazonWeb() {
         Uri webpage = Uri.parse("https://www.amazon.co.uk/gp/product/B07S7QWV27");
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
@@ -203,13 +189,13 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
     @Override
     protected void onPause() {
         super.onPause();
-        // Get the Shared Preferences editor
+        // Get the sharedPreferences editor
         SharedPreferences.Editor sharedPrefsEditor = this.sharedPrefs.edit();
 
-        // Store if Like icon has been clicked or not
+        // Store if the show was liked or disliked in a boolean in sharedPreferences
         sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_blindspot_liked), blindspot_liked);
 
-        // Apply the edits to Shared Preferences
+        // Apply the edits to SharedPreferences
         sharedPrefsEditor.apply();
     }
 }

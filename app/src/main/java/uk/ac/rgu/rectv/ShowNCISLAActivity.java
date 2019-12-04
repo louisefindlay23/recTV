@@ -25,7 +25,7 @@ public class ShowNCISLAActivity extends AppCompatActivity implements View.OnClic
     // TAG to be used when logging
     private static final String TAG = ShowNCISLAActivity.class.getCanonicalName();
 
-    // constant for downloading show data
+    // Constant for downloading show data
     private static final String SHOW_URL_TEMPLATE = "http://www.omdbapi.com/?t=%s&apikey=4c1aac0f";
 
     @Override
@@ -33,40 +33,38 @@ public class ShowNCISLAActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_ncisla);
 
-        // get the AppName button
+        // Get all the elements that should be made clickable
         Button btnAppName = findViewById(R.id.btnAppName);
-
-        // set the click listener to the btnAppName burtton
-        btnAppName.setOnClickListener(this);
-
-        // get the Down Arrow image
         ImageView ivNCISLADownArrow = findViewById(R.id.ivNCISLADownArrow);
 
-        // set the click listener to the ivDownArrow
+        // Set click listeners to all clickable elements
+        btnAppName.setOnClickListener(this);
         ivNCISLADownArrow.setOnClickListener(this);
 
-        // Download show description from OMDB API
+        // When the activity has been started, run the ShowDescription method to populate the show description
         downloadShowDescription();
 
-        // Download show stats from OMDB API
+        // When the activity has been started, run the ShowStats method to populate the show's statistics
         downloadShowStats();
     }
 
     public void downloadShowDescription(){
-        // Downloads and displays a show description from the OMDB API
+        // Downloads TV show metadata using Volley from the Open Movie Database and parses the returning JSON to display the show description as a string
+
+        // Store the show name in order to download metadata
         String getShowNameForShowMetadata = (getString(R.string.ncisla_name));
 
         Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
 
-        // if there's no show name to download details for then exit
+        // If there's no show name to download details for then gracefully exit
         if (getShowNameForShowMetadata == null) {
             return;
         }
 
-        // build string for the URL to get the show details from
+        // Build string for the URL to get the show details from
         String url = String.format(SHOW_URL_TEMPLATE, getShowNameForShowMetadata);
 
-        // Request a string response from the provided URL.
+        // Request a string response from the provided URL
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -74,16 +72,19 @@ public class ShowNCISLAActivity extends AppCompatActivity implements View.OnClic
                         StringBuilder NCISLAshowDescription = new StringBuilder();
                         TextView tvNCISLAShowDescriptionDisplay = findViewById(R.id.tvNCISLAShowDescription);
 
+                        // Build JSONObjects to parse the JSON response to a more human-readable format
                         try {
                             JSONObject responseObj = new JSONObject(response);
                             String plotObj = responseObj.getString("Plot");
-                            // add the plot to the display
+                            // Add the returned show description to the display
                             NCISLAshowDescription.append("\n")
                                     .append(responseObj.getString("Plot"));
+                        // If there are any JSONException errors, print them in the log so the error can be diagnosed
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
+                        // If there was an error in parsing the JSON, tell the user
                         if (NCISLAshowDescription.length() == 0){
                             tvNCISLAShowDescriptionDisplay.setText(getString(R.string.showdetails_json_error));
                         } else {
@@ -93,31 +94,34 @@ public class ShowNCISLAActivity extends AppCompatActivity implements View.OnClic
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                // If there was a VolleyError downloading the show metadata, inform the user
                 TextView tvNCISLAShowDescriptionDisplay = findViewById(R.id.tvNCISLAShowDescription);
                 tvNCISLAShowDescriptionDisplay.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 
-        // make the request to download the show details
+        // Make the request to download the show details
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(stringRequest);
     }
 
     public void downloadShowStats(){
-        // Downloads and displays the Show Stats from OMDB API
+        // Downloads TV show metadata using Volley from the Open Movie Database and parses the returning JSON to display strings of year, episode runtime and age rating
+
+        // Store the show's name in order to download metadata
         String getShowNameForShowMetadata = (getString(R.string.ncisla_name));
 
         Log.d(TAG, "getting the show metadata for" + getShowNameForShowMetadata);
 
-        // if there's no show name to download details for then exit
+        // If there's no show name to download details for then gracefully exit
         if (getShowNameForShowMetadata == null) {
             return;
         }
 
-        // build string for the URL to get the show details from
+        // Build string for the URL to get the show details from
         String url = String.format(SHOW_URL_TEMPLATE, getShowNameForShowMetadata);
 
-        // Request a string response from the provided URL.
+        // Request a string response from the provided URL
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -125,18 +129,22 @@ public class ShowNCISLAActivity extends AppCompatActivity implements View.OnClic
                         StringBuilder NCISLAshowDescription = new StringBuilder();
                         TextView tvNCISLAShowStats = findViewById(R.id.tvNCISLAShowStats);
 
+                        // Build JSONObjects to parse the JSON response to a more human-readable format
                         try {
                             JSONObject responseObj = new JSONObject(response);
                             String yearObj = responseObj.getString("Year");
-                            // add the title to the display
+                            // Add the year, episode runtime and age rating returned to the display
                             NCISLAshowDescription.append("\n")
                                     .append(responseObj.getString("Year"))
                                     .append(" / ").append(responseObj.getString("Runtime"))
                                     .append(" / ").append(responseObj.getString("Rated"));
+
+                        // If there are any JSONException errors, print them in the log so the error can be diagnosed
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
+                        // If there was an error in parsing the JSON, tell the user
                         if (NCISLAshowDescription.length() == 0){
                             tvNCISLAShowStats.setText(getString(R.string.showdetails_json_error));
                         } else {
@@ -146,30 +154,27 @@ public class ShowNCISLAActivity extends AppCompatActivity implements View.OnClic
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                // If there was a VolleyError downloading the show metadata, inform the user
                 TextView tvNCISLAShowStats = findViewById(R.id.tvNCISLAShowStats);
                 tvNCISLAShowStats.setText(getString(R.string.showdetails_download_error, error.getLocalizedMessage()));
             }
         });
 
-        // make the request to download the show details
+        // Make the request to download the show details
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(stringRequest);
     }
-    // Changing Activity
+
     @Override
     public void onClick(View view) {
-        // view is the View (Button, ExitText, TextView, etc) that was clicked
+        // If a clickable element was clicked, start the appropriate activity
         if (view.getId() == R.id.btnAppName) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), RecommendationsActivity.class);
-            // start the Activity
             startActivity(intent);
         }
 
         else if (view.getId() == R.id.ivNCISLADownArrow) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), ShowNCISLA2Activity.class);
-            // start the Activity
             startActivity(intent);
         }
     }

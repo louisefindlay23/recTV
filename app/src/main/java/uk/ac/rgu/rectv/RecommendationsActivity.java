@@ -20,36 +20,25 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendations);
 
-        // get the AppName button
+        // Get all the elements that should be made clickable
         Button btnAppName = findViewById(R.id.btnAppName);
-
-        // set the click listener to the btnAppName burtton
-        btnAppName.setOnClickListener(this);
-
-        // get the PersonofInterest Poster image
         ImageView ivPersonofInterestPoster = findViewById(R.id.ivPersonofInterestPoster);
-
-        // set the click listener to the PersonofInterest Poster image
-        ivPersonofInterestPoster.setOnClickListener(this);
-
-        // get the Blindspot Poster image
         ImageView ivBlindspotPoster = findViewById(R.id.ivBlindspotPoster);
-
-        // set the click listener to the Blindspot Poster image
-        ivBlindspotPoster.setOnClickListener(this);
-
-        // get the NCIS LA Poster image
         ImageView ivNCISLAPoster = findViewById(R.id.ivNCISLAPoster);
 
-        // set the click listener to the NCIS LA Poster image
+        // Set click listeners to all clickable elements
+        btnAppName.setOnClickListener(this);
+        ivPersonofInterestPoster.setOnClickListener(this);
+        ivBlindspotPoster.setOnClickListener(this);
         ivNCISLAPoster.setOnClickListener(this);
 
-        // instantiate sharedPrefs
+        // Instantiate sharedPreferences
         this.sharedPrefs = getSharedPreferences(getString(R.string.shared_prefs_filename), MODE_PRIVATE);
 
-        // restore the value of if a TV Show was liked or not
+        // Restore the value in sharedPreferences if the TV Show was liked or not
         personofinterest_liked = sharedPrefs.getBoolean(getString(R.string.shared_pref_personofinterest_liked), true);
 
+        // If the show was liked or disliked, change the text and posters in that row to match recommendations
         if(personofinterest_liked == true){
             ImageView ivAgentXPoster = findViewById(R.id.ivPoster4);
             ivAgentXPoster.setImageResource(R.drawable.xenawarriorprincess_poster);
@@ -71,29 +60,20 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
         }
     }
 
-    // Changing Activity
     @Override
     public void onClick(View view) {
-        // view is the View (Button, ExitText, TextView, etc) that was clicked
+        // If a clickable element was clicked, start the appropriate activity
         if (view.getId() == R.id.ivPersonofInterestPoster) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), ShowPOIActivity.class);
-            // start the Activity
             startActivity(intent);
         } else if (view.getId() == R.id.btnAppName) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            // start the Activity
             startActivity(intent);
         } else if (view.getId() == R.id.ivBlindspotPoster) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), ShowBlindspotActivity.class);
-            // start the Activity
             startActivity(intent);
         } else if (view.getId() == R.id.ivNCISLAPoster) {
-            // create an intent
             Intent intent = new Intent(getApplicationContext(), ShowNCISLAActivity.class);
-            // start the Activity
             startActivity(intent);
         }
     }
@@ -101,13 +81,13 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
     @Override
     protected void onPause() {
         super.onPause();
-        // Get the Shared Preferences editor
+        // Get the sharedPreferences editor
         SharedPreferences.Editor sharedPrefsEditor = this.sharedPrefs.edit();
 
-        // Store if Like icon has been clicked or not
+        // Store if the show was liked or disliked in a boolean in sharedPreferences
         sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_personofinterest_liked), personofinterest_liked);
 
-        // Apply the edits to Shared Preferences
+        // Apply the edits to sharedPreferences
         sharedPrefsEditor.apply();
     }
 
