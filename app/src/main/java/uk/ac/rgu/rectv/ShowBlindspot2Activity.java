@@ -72,6 +72,8 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
             ivBlindspotDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvBlindspotor = findViewById(R.id.tvBlindspotor);
             tvBlindspotor.setText(getString(R.string.liked));
+            TextView tvBlindspotstatus = findViewById(R.id.tvBlindspotLoved);
+            tvBlindspotstatus.setText(getString(R.string.loved_blindspot));
             // If the show was liked, run the downloadRelatedShows method to get similar shows
             downloadRelatedShows();
         } else if (blindspot_liked == false) {

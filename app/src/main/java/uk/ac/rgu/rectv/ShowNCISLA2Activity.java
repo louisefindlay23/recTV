@@ -70,6 +70,8 @@ public class ShowNCISLA2Activity extends AppCompatActivity implements View.OnCli
             ivNCISLADislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvNCISLAor = findViewById(R.id.tvNCISLAor);
             tvNCISLAor.setText(getString(R.string.liked));
+            TextView tvNCISLAstatus = findViewById(R.id.tvNCISLALoved);
+            tvNCISLAstatus.setText(getString(R.string.loved_ncisla));
             // If the show was liked, run the downloadRelatedShows method to get similar shows
             downloadRelatedShows();
         } else if (ncisla_liked == false) {

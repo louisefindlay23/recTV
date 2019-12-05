@@ -71,6 +71,8 @@ public class ShowPOI2Activity extends AppCompatActivity implements View.OnClickL
             ivDislikeOutline.setImageResource(R.drawable.dislike_outline);
             TextView tvPOIor = findViewById(R.id.tvPOIor);
             tvPOIor.setText(getString(R.string.liked));
+            TextView tvPersonofIntereststatus = findViewById(R.id.tvPersonofInterestLoved);
+            tvPersonofIntereststatus.setText(getString(R.string.loved_personofinterest));
             // If the show was liked, run the downloadRelatedShows method to get similar shows
             downloadRelatedShows();
         } else if (personofinterest_liked == false) {
