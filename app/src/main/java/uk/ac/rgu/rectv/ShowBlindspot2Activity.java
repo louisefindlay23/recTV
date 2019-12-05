@@ -153,12 +153,11 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
         if (view.getId() == R.id.ivBlindspotBackArrow) {
             Intent intent = new Intent(getApplicationContext(), ShowBlindspotActivity.class);
             startActivity(intent);
-            // Run method to launch web browser to Amazon website
+            // Run method to launch web browser to Amazon website and Google Play
         } else if (view.getId() == R.id.ivBlindspotAmazonVideo) {
-            launchAmazonWeb();
-            // Run method to launch Google Play
+            launchWeb("https://www.amazon.co.uk/gp/video/detail/B07S7QWV27");
         } else if (view.getId() == R.id.ivBlindspotGooglePlay) {
-            launchGooglePlayWeb();
+            launchWeb("https://play.google.com/store/tv/show/Blindspot?id=OtezusYkH1Y&hl=en&gl=GB");
             // If the show's like or dislike status has been changed, update the boolean and run the LikeorDislike method again
         } else if (view.getId() == R.id.ivBlindspotLikeOutline) {
             blindspot_liked = true;
@@ -170,16 +169,8 @@ public class ShowBlindspot2Activity extends AppCompatActivity implements View.On
     }
 
     // Methods to launch the web browser to streaming and on demand services
-    private void launchAmazonWeb() {
-        Uri webpage = Uri.parse("https://www.amazon.co.uk/gp/product/B07S7QWV27");
-        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
-    }
-
-    private void launchGooglePlayWeb() {
-        Uri webpage = Uri.parse("https://play.google.com/store/tv/show/Blindspot?id=OtezusYkH1Y&hl=en&gl=GB");
+    public void launchWeb(String url) {
+        Uri webpage = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
