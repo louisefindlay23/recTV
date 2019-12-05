@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class RecommendationsActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // (Adapted from Course Materials Week 6)
     private SharedPreferences sharedPrefs;
     private boolean personofinterest_liked;
 
@@ -20,22 +21,22 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendations);
 
-        // Get all the elements that should be made clickable
+        // Get all the elements that should be made clickable (Adapted code from Course Materials Week 3)
         Button btnAppName = findViewById(R.id.btnAppName);
         ImageView ivPersonofInterestPoster = findViewById(R.id.ivPersonofInterestPoster);
         ImageView ivBlindspotPoster = findViewById(R.id.ivBlindspotPoster);
         ImageView ivNCISLAPoster = findViewById(R.id.ivNCISLAPoster);
 
-        // Set click listeners to all clickable elements
+        // Set click listeners to all clickable elements Adapted code from Course Materials Week 3)
         btnAppName.setOnClickListener(this);
         ivPersonofInterestPoster.setOnClickListener(this);
         ivBlindspotPoster.setOnClickListener(this);
         ivNCISLAPoster.setOnClickListener(this);
 
-        // Instantiate sharedPreferences
+        // Instantiate sharedPreferences (Adapted code from Course Materials Week 6)
         this.sharedPrefs = getSharedPreferences(getString(R.string.shared_prefs_filename), MODE_PRIVATE);
 
-        // Restore the value in sharedPreferences if the TV Show was liked or not
+        // Restore the value in sharedPreferences if the TV Show was liked or not (Adapted code from Course Materials Week 6)
         personofinterest_liked = sharedPrefs.getBoolean(getString(R.string.shared_pref_personofinterest_liked), true);
 
         // If the show was liked or disliked, change the text and posters in that row to match recommendations
@@ -62,7 +63,7 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View view) {
-        // If a clickable element was clicked, start the appropriate activity
+        // If a clickable element was clicked, start the appropriate activity (Adapted from Course Materials Week 3)
         if (view.getId() == R.id.ivPersonofInterestPoster) {
             Intent intent = new Intent(getApplicationContext(), ShowPOIActivity.class);
             startActivity(intent);
@@ -81,13 +82,13 @@ public class RecommendationsActivity extends AppCompatActivity implements View.O
     @Override
     protected void onPause() {
         super.onPause();
-        // Get the sharedPreferences editor
+        // Get the sharedPreferences editor (Adapted code from Course Materials Week 6)
         SharedPreferences.Editor sharedPrefsEditor = this.sharedPrefs.edit();
 
-        // Store if the show was liked or disliked in a boolean in sharedPreferences
+        // Store if the show was liked or disliked in a boolean in sharedPreferences (Adapted code from Course Materials Week 6)
         sharedPrefsEditor.putBoolean(getString(R.string.shared_pref_personofinterest_liked), personofinterest_liked);
 
-        // Apply the edits to sharedPreferences
+        // Apply the edits to sharedPreferences (Adapted code from Course Materials Week 6)
         sharedPrefsEditor.apply();
     }
 

@@ -24,7 +24,7 @@ public class ShowNameRecyclerViewAdapter extends RecyclerView.Adapter<ShowNameRe
 
     @NonNull
     @Override
-    // Implement the onCreateViewHolder to inflate the XML layout, showname_item
+    // Implement the onCreateViewHolder to inflate the XML layout, showname_item (Adapted from Course Materials Week 6)
     public ShowNameRecyclerViewAdapter.ShowNameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View shownameView = this.inflater.inflate(R.layout.showname_item, parent, false);
         ShowNameViewHolder viewHolder = new ShowNameViewHolder(this, shownameView);
@@ -32,7 +32,7 @@ public class ShowNameRecyclerViewAdapter extends RecyclerView.Adapter<ShowNameRe
     }
 
     @Override
-    // Implement the onBindViewHolder to get the position of the RecyclerView
+    // Implement the onBindViewHolder to get the position of the RecyclerView (Adapted from Course Materials Week 6)
     public void onBindViewHolder(@NonNull ShowNameRecyclerViewAdapter.ShowNameViewHolder holder, int position) {
         ShowName shownameToBeDisplayed = this.shownames.get(position);
 
@@ -41,7 +41,7 @@ public class ShowNameRecyclerViewAdapter extends RecyclerView.Adapter<ShowNameRe
     }
 
     @Override
-    // Get and return the number of items in the shownames list
+    // Get and return the number of items in the shownames list (Adapted from Course Materials Week 6)
     public int getItemCount() {
         return this.shownames.size();
     }
