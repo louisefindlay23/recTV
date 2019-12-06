@@ -35,7 +35,7 @@
         android:id="@+id/tvNCISLAShowStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:fontFamily="@font/fredoka_one"
@@ -61,12 +61,14 @@
 
     <ImageView
         android:id="@+id/ivNCISLADownArrow"
-        android:layout_width="63dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="53dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/down_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNCISLAShowDescription"
         app:srcCompat="@drawable/down_arrow" />
 </androidx.constraintlayout.widget.ConstraintLayout>
